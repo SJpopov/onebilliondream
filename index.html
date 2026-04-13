@@ -645,7 +645,7 @@
   <p class="hero-eyebrow">A completely honest request</p>
   <h1>One Billion <em>Dream</em></h1>
   <p class="hero-sub">I have a dream. I probably won't achieve it alone. So I'm asking you.</p>
-  <a href="#donate" class="hero-cta">Donate →</a>
+  <a href="#donate" class="hero-cta" onclick="event.preventDefault();document.getElementById('donate').scrollIntoView({behavior:'smooth',block:'start'})">Donate →</a>
   <p class="scroll-hint">↓ &nbsp; scroll &nbsp; ↓</p>
 </section>
 
@@ -1001,14 +1001,7 @@
     setTimeout(() => { btn.textContent = orig; btn.style.color = ''; }, 2000);
   }
 
-  // Smooth scroll with offset for donate button
-  document.querySelector('.hero-cta').addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.getElementById('donate');
-    const offset = 80;
-    const top = target.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top, behavior: 'smooth' });
-  });
+  function copyLink() {
     navigator.clipboard.writeText('https://onebilliondream.com');
     const btn = event.target;
     btn.textContent = 'Copied!';
