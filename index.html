@@ -742,13 +742,14 @@
   <h2>Choose your <em>method</em></h2>
   <p class="donate-sub">Or more, if you're feeling generous today.</p>
 
-  <div class="amount-row">
-    <button class="amt-btn active" onclick="setAmount(this, 1)">$1</button>
-    <button class="amt-btn" onclick="setAmount(this, 5)">$5</button>
-    <button class="amt-btn" onclick="setAmount(this, 10)">$10</button>
-    <button class="amt-btn" onclick="setAmount(this, 50)">$50</button>
-    <button class="amt-btn" onclick="setAmount(this, 100)">$100</button>
-    <input type="number" id="custom-amount" min="1" placeholder="Other" onchange="setCustomAmount(this)" oninput="setCustomAmount(this)" style="width:80px;padding:0.6rem 0.75rem;background:transparent;border:1px solid rgba(245,240,232,0.2);border-radius:2px;color:var(--cream);font-family:'Space Mono',monospace;font-size:13px;text-align:center;">
+  <div style="width:100%;max-width:540px;margin:0 auto 2.5rem;">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.75rem;">
+      <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.15em;color:var(--gold-dim);text-transform:uppercase;">Raised so far</span>
+      <span style="font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);">Goal: $1,000,000,000</span>
+    </div>
+    <div style="position:relative;height:6px;background:rgba(245,240,232,0.08);border-radius:3px;overflow:hidden;">
+      <div id="progress-bar" style="height:100%;width:0%;background:linear-gradient(90deg,var(--gold-dim),var(--gold));border-radius:3px;transition:width 1.5s ease;"></div>
+    </div>
   </div>
 
   <div class="donate-methods">
@@ -1004,6 +1005,14 @@
   `;
   document.head.appendChild(styleEl);
 
+  // ============================================
+  // PROGRESS BAR — смени само това число:
+  const TOTAL_RAISED = 0;
+  // ============================================
+  const GOAL = 1000000000;
+  const pct = (TOTAL_RAISED / GOAL) * 100;
+  document.getElementById('progress-bar').style.width = Math.max(pct, 0.02) + '%';
+
   // Amount selector
   let currentAmount = 1;
   function updatePayPal(amt) {
@@ -1015,7 +1024,6 @@
     document.querySelectorAll('.amt-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     currentAmount = amt;
-    document.getElementById('custom-amount').value = '';
     updatePayPal(amt);
   }
   function setCustomAmount(input) {
