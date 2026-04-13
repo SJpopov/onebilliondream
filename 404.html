@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — One Billion Dream</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --gold: #c9a84c;
+    --gold-dim: #8a6d2f;
+    --cream: #f5f0e8;
+    --dark: #07090f;
+    --muted: rgba(245,240,232,0.45);
+  }
+  html, body {
+    height: 100%;
+    background: var(--dark);
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+    overflow: hidden;
+  }
+  #stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    animation: twinkle var(--d, 3s) ease-in-out infinite var(--delay, 0s);
+    opacity: 0;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; }
+    50% { opacity: var(--peak, 0.8); }
+  }
+  .container {
+    position: relative;
+    z-index: 1;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+  }
+  .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.3s;
+  }
+  .number {
+    font-size: clamp(6rem, 20vw, 12rem);
+    font-weight: 300;
+    line-height: 1;
+    color: var(--gold);
+    opacity: 0;
+    animation: fadeUp 1.2s ease forwards 0.5s;
+    letter-spacing: -0.02em;
+  }
+  .message {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: 300;
+    color: var(--muted);
+    margin: 1.5rem 0 2.5rem;
+    opacity: 0;
+    animation: fadeUp 1.2s ease forwards 0.7s;
+    font-style: italic;
+  }
+  .back-btn {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--dark);
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 0.9rem 2rem;
+    border-radius: 2px;
+    opacity: 0;
+    animation: fadeUp 1.2s ease forwards 0.9s;
+    transition: background 0.2s, color 0.2s;
+  }
+  .back-btn:hover {
+    background: transparent;
+    color: var(--gold);
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+<div id="stars"></div>
+<div class="container">
+  <p class="eyebrow">Lost in space</p>
+  <p class="number">404</p>
+  <p class="message">This page doesn't exist.<br>But the dream does.</p>
+  <a href="/" class="back-btn">← Back to the dream</a>
+</div>
+<script>
+  const s = document.getElementById('stars');
+  for (let i = 0; i < 150; i++) {
+    const el = document.createElement('div');
+    el.className = 'star';
+    const size = Math.random() < 0.8 ? 1 : 2;
+    el.style.cssText = `width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${2+Math.random()*4}s;--delay:${Math.random()*6}s;--peak:${0.3+Math.random()*0.7};`;
+    s.appendChild(el);
+  }
+</script>
+</body>
+</html>
