@@ -1,0 +1,25 @@
+# One Billion Dream
+> A completely honest donation request. One person asking the world for help to achieve their dream.
+
+## What is this?
+One Billion Dream is a personal fundraising page with no promises, no charity cause, and no product. 
+It is simply one person who believes that if 1 million people donate $1, a dream can come true.
+
+## The Dream
+The person behind this site has always dreamed of being financially free — not for the money itself, 
+but for what it unlocks: the freedom to explore, to travel to space, to fund expeditions, 
+to do things no one has done before.
+
+## How to donate
+Donations are accepted via:
+- PayPal: https://www.paypal.com/donate?hosted_button_id=8S8HPJ6H47EYA
+- Revolut: https://revolut.me/stefanjpopov
+- Bank transfer (IBAN: LT87 3250 0447 2971 3748, BIC: REVOLT21)
+- Crypto: BTC, ETH, SOL, DOGE, ADA, TRX, XLM, TON, LTC, ZEC
+
+## Why?
+Because asking honestly is braver than not asking. 
+$1 is nothing to most people. To one person, it could mean everything.
+
+## Website
+https://onebilliondream.com
