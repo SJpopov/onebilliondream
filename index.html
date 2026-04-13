@@ -337,8 +337,9 @@
   #donate {
     max-width: 680px;
     margin: 0 auto;
-    padding: 6rem 2rem;
+    padding: 2rem 2rem 6rem;
     text-align: center;
+    scroll-margin-top: 20px;
   }
 
   #donate h2 {
@@ -738,7 +739,7 @@
 <section id="donate">
   <p class="section-tag">Help make it happen</p>
   <div class="divider"></div>
-  <h2>Choose your<br><em>$1</em> method</h2>
+  <h2>Choose your <em>method</em></h2>
   <p class="donate-sub">Or more, if you're feeling generous today.</p>
 
   <div class="amount-row">
@@ -802,10 +803,41 @@
   <div class="modal" onclick="event.stopPropagation()">
     <button class="modal-close" onclick="closeModal('bank-modal')">×</button>
     <h3>Bank Transfer</h3>
-    <div class="modal-row"><span>Account Name</span><span>Stefan Popov</span></div>
-    <div class="modal-row"><span>IBAN</span><span>LT87 3250 0447 2971 3748</span></div>
-    <div class="modal-row"><span>BIC / SWIFT</span><span>REVOLT21</span></div><div class="modal-row"><span>Bank</span><span>Revolut Bank UAB, Vilnius</span></div>
-    <div class="modal-row"><span>Reference</span><span>DREAM</span></div>
+    <div class="modal-row">
+      <span>Account Name</span>
+      <span style="display:flex;align-items:center;gap:0.5rem;">
+        Stefan Popov
+        <button onclick="copyAddr(this,'Stefan Popov')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+      </span>
+    </div>
+    <div class="modal-row">
+      <span>IBAN</span>
+      <span style="display:flex;align-items:center;gap:0.5rem;">
+        LT87 3250 0447 2971 3748
+        <button onclick="copyAddr(this,'LT87325004472971 3748')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+      </span>
+    </div>
+    <div class="modal-row">
+      <span>BIC / SWIFT</span>
+      <span style="display:flex;align-items:center;gap:0.5rem;">
+        REVOLT21
+        <button onclick="copyAddr(this,'REVOLT21')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+      </span>
+    </div>
+    <div class="modal-row">
+      <span>Bank</span>
+      <span style="display:flex;align-items:center;gap:0.5rem;">
+        Revolut Bank UAB, Vilnius
+        <button onclick="copyAddr(this,'Revolut Bank UAB, Konstitucijos ave. 21B, 08130, Vilnius, Lithuania')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+      </span>
+    </div>
+    <div class="modal-row">
+      <span>Reference</span>
+      <span style="display:flex;align-items:center;gap:0.5rem;">
+        DREAM
+        <button onclick="copyAddr(this,'DREAM')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+      </span>
+    </div>
     <p style="margin-top:1.5rem;font-size:0.85rem;color:var(--muted);font-style:italic;">Any amount is welcome. Even $1.</p>
   </div>
 </div>
