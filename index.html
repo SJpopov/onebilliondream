@@ -812,19 +812,92 @@
 
 <!-- CRYPTO MODAL -->
 <div class="modal-overlay" id="crypto-modal" onclick="closeModal('crypto-modal')">
-  <div class="modal" onclick="event.stopPropagation()">
+  <div class="modal" onclick="event.stopPropagation()" style="max-width:560px;max-height:85vh;overflow-y:auto;">
     <button class="modal-close" onclick="closeModal('crypto-modal')">×</button>
     <h3>Crypto Addresses</h3>
-    <div class="modal-row"><span>BTC</span><span style="font-size:0.75rem;font-family:'Space Mono',monospace;">bc1q9zsep5cspgu3zeyh5hlg5tyvra59duj2wq27km</span></div>
-    <div class="modal-row"><span>ETH / USDT / BNB</span><span style="font-size:0.75rem;font-family:'Space Mono',monospace;">0x48bbe31fa584b52b4fce3e7cae48cadfbf50a9b2</span></div>
-    <div class="modal-row"><span>SOL</span><span style="font-size:0.75rem;font-family:'Space Mono',monospace;">62s6iRJpHbYENpj96Nm6fncqBTygTHrSjEvUVWANcKfV</span></div>
-    <div class="modal-row"><span>DOGE</span><span style="font-size:0.75rem;font-family:'Space Mono',monospace;">D9G7cNbGhWxocSimXNMiRCZpCeS4C5aV6p</span></div>
-    <div class="modal-row"><span>ADA</span><span style="font-size:0.75rem;font-family:'Space Mono',monospace;">addr1q903k5pwzhf46fjjh7dp7047t9ard89hulmpdj3jr4mj8spp7xaqmgslpxklpwjqck3rluqzrvuw59dsvcwe5rhs8dxsyhkl66</span></div>
-    <div class="modal-row"><span>TRX / USDT TRC20</span><span style="font-size:0.75rem;font-family:'Space Mono',monospace;">TKfTomhzn5n67euckht3Dz34YTrQJN2m1s</span></div>
-    <div class="modal-row"><span>XLM</span><span style="font-size:0.75rem;font-family:'Space Mono',monospace;">GCW3WED6SDHAWABJNMODJN3MU5WO7XE2Q7S23VMCWZWXL7NAB23DSF3D</span></div>
-    <div class="modal-row"><span>TON</span><span style="font-size:0.75rem;font-family:'Space Mono',monospace;">UQDgV0oRmvWrwA2yarptc70V15C6E_83tkxtcJSkzZmXbi2T</span></div>
-    <div class="modal-row"><span>LTC</span><span style="font-size:0.75rem;font-family:'Space Mono',monospace;">ltc1q8fu9euv8zelfuln5vc776tn7z8qwtj6sr7755w</span></div>
-    <div class="modal-row"><span>ZEC</span><span style="font-size:0.75rem;font-family:'Space Mono',monospace;">t1Nd9AoiQKhkBC2Boj2KQ26ChgMLidyAxgM</span></div>
+    <div style="display:flex;flex-direction:column;gap:0.75rem;margin-top:0.5rem;">
+
+      <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
+          <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">BTC</span>
+          <button onclick="copyAddr(this,'bc1q9zsep5cspgu3zeyh5hlg5tyvra59duj2wq27km')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">bc1q9zsep5cspgu3zeyh5hlg5tyvra59duj2wq27km</div>
+      </div>
+
+      <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
+          <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">ETH / USDT / USDC / BNB</span>
+          <button onclick="copyAddr(this,'0x48bbe31fa584b52b4fce3e7cae48cadfbf50a9b2')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">0x48bbe31fa584b52b4fce3e7cae48cadfbf50a9b2</div>
+      </div>
+
+      <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
+          <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">SOL</span>
+          <button onclick="copyAddr(this,'62s6iRJpHbYENpj96Nm6fncqBTygTHrSjEvUVWANcKfV')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">62s6iRJpHbYENpj96Nm6fncqBTygTHrSjEvUVWANcKfV</div>
+      </div>
+
+      <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
+          <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">DOGE</span>
+          <button onclick="copyAddr(this,'D9G7cNbGhWxocSimXNMiRCZpCeS4C5aV6p')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">D9G7cNbGhWxocSimXNMiRCZpCeS4C5aV6p</div>
+      </div>
+
+      <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
+          <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">ADA</span>
+          <button onclick="copyAddr(this,'addr1q903k5pwzhf46fjjh7dp7047t9ard89hulmpdj3jr4mj8spp7xaqmgslpxklpwjqck3rluqzrvuw59dsvcwe5rhs8dxsyhkl66')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">addr1q903k5pwzhf46fjjh7dp7047t9ard89hulmpdj3jr4mj8spp7xaqmgslpxklpwjqck3rluqzrvuw59dsvcwe5rhs8dxsyhkl66</div>
+      </div>
+
+      <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
+          <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">TRX / USDT TRC20</span>
+          <button onclick="copyAddr(this,'TKfTomhzn5n67euckht3Dz34YTrQJN2m1s')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">TKfTomhzn5n67euckht3Dz34YTrQJN2m1s</div>
+      </div>
+
+      <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
+          <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">XLM</span>
+          <button onclick="copyAddr(this,'GCW3WED6SDHAWABJNMODJN3MU5WO7XE2Q7S23VMCWZWXL7NAB23DSF3D')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">GCW3WED6SDHAWABJNMODJN3MU5WO7XE2Q7S23VMCWZWXL7NAB23DSF3D</div>
+      </div>
+
+      <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
+          <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">TON</span>
+          <button onclick="copyAddr(this,'UQDgV0oRmvWrwA2yarptc70V15C6E_83tkxtcJSkzZmXbi2T')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">UQDgV0oRmvWrwA2yarptc70V15C6E_83tkxtcJSkzZmXbi2T</div>
+      </div>
+
+      <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
+          <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">LTC</span>
+          <button onclick="copyAddr(this,'ltc1q8fu9euv8zelfuln5vc776tn7z8qwtj6sr7755w')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">ltc1q8fu9euv8zelfuln5vc776tn7z8qwtj6sr7755w</div>
+      </div>
+
+      <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
+          <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">ZEC</span>
+          <button onclick="copyAddr(this,'t1Nd9AoiQKhkBC2Boj2KQ26ChgMLidyAxgM')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">t1Nd9AoiQKhkBC2Boj2KQ26ChgMLidyAxgM</div>
+      </div>
+
+    </div>
     <p style="margin-top:1.5rem;font-size:0.85rem;color:var(--muted);font-style:italic;">Double-check the address before sending.</p>
   </div>
 </div>
@@ -920,7 +993,22 @@
   document.getElementById('tw-share').href = `https://twitter.com/intent/tweet?text=${txt}&url=${url}`;
   document.getElementById('fb-share').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
 
-  function copyLink() {
+  function copyAddr(btn, addr) {
+    navigator.clipboard.writeText(addr);
+    const orig = btn.textContent;
+    btn.textContent = 'COPIED!';
+    btn.style.color = 'var(--gold)';
+    setTimeout(() => { btn.textContent = orig; btn.style.color = ''; }, 2000);
+  }
+
+  // Smooth scroll with offset for donate button
+  document.querySelector('.hero-cta').addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.getElementById('donate');
+    const offset = 80;
+    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+  });
     navigator.clipboard.writeText('https://onebilliondream.com');
     const btn = event.target;
     btn.textContent = 'Copied!';
