@@ -835,6 +835,11 @@
   <div class="share-btns">
     <a class="share-btn" id="tw-share" href="#" target="_blank">Twitter / X</a>
     <a class="share-btn" id="fb-share" href="#" target="_blank">Facebook</a>
+    <a class="share-btn" id="wa-share" href="#" target="_blank">WhatsApp</a>
+    <a class="share-btn" id="tg-share" href="#" target="_blank">Telegram</a>
+    <a class="share-btn" id="rd-share" href="#" target="_blank">Reddit</a>
+    <a class="share-btn" href="https://www.tiktok.com" target="_blank">TikTok</a>
+    <a class="share-btn" href="https://www.instagram.com" target="_blank">Instagram</a>
     <button class="share-btn" onclick="copyLink()">Copy Link</button>
   </div>
 </section>
@@ -1089,6 +1094,9 @@
   const txt = encodeURIComponent('Someone asked honestly for $1 to fund their dream of going to space. I respect it. onebilliondream.com');
   document.getElementById('tw-share').href = `https://twitter.com/intent/tweet?text=${txt}&url=${url}`;
   document.getElementById('fb-share').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+  document.getElementById('wa-share').href = `https://wa.me/?text=${txt}%20${url}`;
+  document.getElementById('tg-share').href = `https://t.me/share/url?url=${url}&text=${txt}`;
+  document.getElementById('rd-share').href = `https://www.reddit.com/submit?url=${url}&title=${txt}`;
 
   function copyAddr(btn, addr) {
     navigator.clipboard.writeText(addr);
