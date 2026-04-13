@@ -748,6 +748,7 @@
     <button class="amt-btn" onclick="setAmount(this, 10)">$10</button>
     <button class="amt-btn" onclick="setAmount(this, 50)">$50</button>
     <button class="amt-btn" onclick="setAmount(this, 100)">$100</button>
+    <input type="number" id="custom-amount" min="1" placeholder="Other" onchange="setCustomAmount(this)" oninput="setCustomAmount(this)" style="width:80px;padding:0.6rem 0.75rem;background:transparent;border:1px solid rgba(245,240,232,0.2);border-radius:2px;color:var(--cream);font-family:'Space Mono',monospace;font-size:13px;text-align:center;">
   </div>
 
   <div class="donate-methods">
@@ -1005,12 +1006,25 @@
 
   // Amount selector
   let currentAmount = 1;
+  function updatePayPal(amt) {
+    const url = `https://www.paypal.com/donate?hosted_button_id=8S8HPJ6H47EYA&amount=${amt}`;
+    document.getElementById('paypal-btn').href = url;
+    document.getElementById('card-paypal-link').href = url;
+  }
   function setAmount(btn, amt) {
     document.querySelectorAll('.amt-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     currentAmount = amt;
-    document.getElementById('paypal-btn').href = `https://www.paypal.com/donate?hosted_button_id=8S8HPJ6H47EYA`;
-    document.getElementById('card-paypal-link').href = `https://www.paypal.com/donate?hosted_button_id=8S8HPJ6H47EYA`;
+    document.getElementById('custom-amount').value = '';
+    updatePayPal(amt);
+  }
+  function setCustomAmount(input) {
+    const amt = parseFloat(input.value);
+    if (amt > 0) {
+      document.querySelectorAll('.amt-btn').forEach(b => b.classList.remove('active'));
+      currentAmount = amt;
+      updatePayPal(amt);
+    }
   }
 
   // Modals
