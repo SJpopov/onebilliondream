@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wall of Dreamers — One Billion Dream</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --gold: #c9a84c;
+    --gold-dim: #8a6d2f;
+    --cream: #f5f0e8;
+    --dark: #07090f;
+    --dark2: #0d1120;
+    --muted: rgba(245,240,232,0.45);
+    --blue: #4a9eda;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--dark);
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  #stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    animation: twinkle var(--d, 3s) ease-in-out infinite var(--delay, 0s);
+    opacity: 0;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; }
+    50% { opacity: var(--peak, 0.8); }
+  }
+
+  /* HEADER */
+  header {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 5rem 2rem 3rem;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+  .back-link {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    text-decoration: none;
+    margin-bottom: 2rem;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--gold); }
+  .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  h1 {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--blue);
+    font-family: 'Cinzel', serif;
+  }
+  .header-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 500px;
+    margin: 0 auto;
+    font-style: italic;
+  }
+
+  /* SUBMIT FORM */
+  #submit-section {
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  .form-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.5rem;
+    text-align: left;
+  }
+  .form-input, .form-textarea {
+    width: 100%;
+    background: rgba(245,240,232,0.04);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 2px;
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.25rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-input:focus, .form-textarea:focus {
+    border-color: rgba(201,168,76,0.4);
+  }
+  .form-textarea { height: 100px; resize: vertical; }
+  .form-input::placeholder, .form-textarea::placeholder { color: var(--muted); }
+  .submit-btn {
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    color: var(--dark);
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.9rem 2.5rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .submit-btn:hover {
+    background: transparent;
+    color: var(--gold);
+  }
+  .form-note {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 1rem;
+  }
+
+  /* WALL */
+  #wall {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 2rem 6rem;
+  }
+  .wall-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .dreams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+  .dream-card {
+    background: rgba(245,240,232,0.03);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 2px;
+    padding: 1.5rem;
+    position: relative;
+    transition: border-color 0.3s;
+  }
+  .dream-card:hover { border-color: rgba(201,168,76,0.25); }
+  .dream-card .dream-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .dream-card .dream-country {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+  .dream-card .dream-text {
+    font-size: 1rem;
+    color: rgba(245,240,232,0.75);
+    font-style: italic;
+    line-height: 1.6;
+  }
+  .dream-card .dream-quote {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    font-size: 2rem;
+    color: rgba(201,168,76,0.15);
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: rgba(201,168,76,0.3);
+    margin: 0 auto 2rem;
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: rgba(245,240,232,0.2);
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (max-width: 600px) {
+    .dreams-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 2.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div id="stars"></div>
+
+<header>
+  <a href="/" class="back-link">← Back to the dream</a>
+  <span class="eyebrow">Every dreamer matters</span>
+  <div class="divider"></div>
+  <h1>Wall of <em>Dreamers</em></h1>
+  <p class="header-sub">These are the people who believed. One dollar, one dream, one name on the wall.</p>
+</header>
+
+<section id="submit-section">
+  <p class="section-tag" style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.25em;color:var(--gold-dim);text-transform:uppercase;margin-bottom:1rem;">Leave your mark</p>
+  <div class="divider"></div>
+
+  <label class="form-label">Your name (or stay anonymous)</label>
+  <input type="text" class="form-input" id="input-name" placeholder="e.g. Alex from Berlin, or Anonymous">
+
+  <label class="form-label">Your dream (optional)</label>
+  <textarea class="form-textarea" id="input-dream" placeholder="What's your dream? Share it with the world..."></textarea>
+
+  <button class="submit-btn" onclick="submitDream()">Add my name to the wall →</button>
+  <p class="form-note">Your message will appear on the wall after review.</p>
+</section>
+
+<section id="wall">
+  <p class="wall-title">— Dreamers who have donated —</p>
+  <div class="dreams-grid" id="dreams-grid">
+
+    <div class="dream-card">
+      <span class="dream-quote">"</span>
+      <p class="dream-name">Anonymous</p>
+      <p class="dream-country">🌍 Unknown</p>
+      <p class="dream-text">I believe in the math. $1 from a million people changes everything.</p>
+    </div>
+
+    <div class="dream-card">
+      <span class="dream-quote">"</span>
+      <p class="dream-name">Sarah</p>
+      <p class="dream-country">🇺🇸 United States</p>
+      <p class="dream-text">My dream is to sail around the world one day. Keep dreaming.</p>
+    </div>
+
+    <div class="dream-card">
+      <span class="dream-quote">"</span>
+      <p class="dream-name">Marco</p>
+      <p class="dream-country">🇮🇹 Italy</p>
+      <p class="dream-text">Honest enough. I donated because I respect the audacity.</p>
+    </div>
+
+    <div class="dream-card">
+      <span class="dream-quote">"</span>
+      <p class="dream-name">Anonymous</p>
+      <p class="dream-country">🌍 Europe</p>
+      <p class="dream-text">To anyone reading this — what's your dream? Chase it.</p>
+    </div>
+
+    <div class="dream-card">
+      <span class="dream-quote">"</span>
+      <p class="dream-name">Yuki</p>
+      <p class="dream-country">🇯🇵 Japan</p>
+      <p class="dream-text">My dream is to open a small bookshop by the sea. One dollar for yours.</p>
+    </div>
+
+    <div class="dream-card">
+      <span class="dream-quote">"</span>
+      <p class="dream-name">Anonymous</p>
+      <p class="dream-country">🌍 Unknown</p>
+      <p class="dream-text">The math is simple. The dream is real. I'm in.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 One Billion Dream &nbsp;·&nbsp; No promises were harmed in the making of this wall.
+</footer>
+
+<script>
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 180; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() < 0.8 ? 1 : 2;
+    s.style.cssText = `width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${2+Math.random()*4}s;--delay:${Math.random()*6}s;--peak:${0.3+Math.random()*0.7};`;
+    starsEl.appendChild(s);
+  }
+
+  function submitDream() {
+    const name = document.getElementById('input-name').value.trim() || 'Anonymous';
+    const dream = document.getElementById('input-dream').value.trim();
+    if (!dream && name === 'Anonymous') {
+      alert('Please add your name or a dream before submitting.');
+      return;
+    }
+    const card = document.createElement('div');
+    card.className = 'dream-card';
+    card.style.animation = 'fadeIn 0.6s ease';
+    card.innerHTML = `
+      <span class="dream-quote">"</span>
+      <p class="dream-name">${name}</p>
+      <p class="dream-country">🌍 Just joined</p>
+      <p class="dream-text">${dream || 'A dreamer.'}</p>
+    `;
+    document.getElementById('dreams-grid').prepend(card);
+    document.getElementById('input-name').value = '';
+    document.getElementById('input-dream').value = '';
+  }
+</script>
+
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</body>
+</html>
