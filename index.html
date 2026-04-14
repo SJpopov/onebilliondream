@@ -1107,14 +1107,30 @@
   document.head.appendChild(styleEl);
 
   // ============================================
-  // PROGRESS BAR — смени само това число:
+  // СМЕНИ САМО ТАЗИ ЦИФРА:
   const TOTAL_RAISED = 947;
   // ============================================
   const GOAL = 1000000000;
   const pct = (TOTAL_RAISED / GOAL) * 100;
-  document.getElementById('progress-bar').style.width = Math.max(pct, 1) + '%';
 
-  // Amount selector
+  // Progress bar
+  document.getElementById('progress-bar').style.width = Math.max(pct, 1) + '%';
+  document.getElementById('raised-amount').textContent = '$' + TOTAL_RAISED.toLocaleString();
+  document.getElementById('raised-pct').textContent = pct < 0.01 ? '<0.01%' : pct.toFixed(pct < 1 ? 4 : 2) + '%';
+
+  // Counter (Total donated so far)
+  function animateCounter() {
+    const el = document.getElementById('counter');
+    if (TOTAL_RAISED === 0) { el.textContent = '$0'; return; }
+    let val = 0;
+    const step = Math.ceil(TOTAL_RAISED / 80);
+    const t = setInterval(() => {
+      val = Math.min(val + step, TOTAL_RAISED);
+      el.textContent = '$' + val.toLocaleString();
+      if (val >= TOTAL_RAISED) clearInterval(t);
+    }, 20);
+  }
+  animateCounter();
   let currentAmount = 1;
   function updatePayPal(amt) {
     const url = `https://www.paypal.com/donate?hosted_button_id=8S8HPJ6H47EYA&amount=${amt}`;
@@ -1166,20 +1182,6 @@
     setTimeout(() => btn.textContent = 'Copy Link', 2000);
   }
 
-  // Counter animation (placeholder — replace with real backend later)
-  function animateCounter() {
-    const el = document.getElementById('counter');
-    let val = 0;
-    const target = 0; // Replace with real total from backend
-    if (target === 0) return;
-    const step = Math.ceil(target / 80);
-    const t = setInterval(() => {
-      val = Math.min(val + step, target);
-      el.textContent = '$' + val.toLocaleString();
-      if (val >= target) clearInterval(t);
-    }, 20);
-  }
-  animateCounter();
 </script>
 
 <!-- COOKIE BANNER -->
