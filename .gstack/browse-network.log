@@ -1,8 +1,0 @@
-[2026-07-04T16:36:45.800Z] GET https://onebilliondream.com/ → pending (?ms, ?B)
-[2026-07-04T16:36:48.330Z] GET https://www.googletagmanager.com/gtag/js?id=G-YH9CQQEZ2R → 200 (681ms, ?B)
-[2026-07-04T16:36:48.330Z] GET https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400;700&family=Cinzel:wght@400;700&display=swap → 200 (214ms, 10338B)
-[2026-07-04T16:36:48.352Z] GET https://onebilliondream.com/857251-hd_1620_1080_25fps.mp4 → 206 (179ms, ?B)
-[2026-07-04T16:36:48.746Z] GET https://fonts.gstatic.com/s/spacemono/v17/i7dPIFZifjKcF5UAWdDRYEF8RQ.woff2 → 200 (325ms, ?B)
-[2026-07-04T16:36:48.746Z] GET https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtK.woff2 → pending (?ms, ?B)
-[2026-07-04T16:36:48.746Z] GET https://fonts.gstatic.com/s/cinzel/v26/8vIJ7ww63mVu7gt79mT7.woff2 → pending (?ms, ?B)
-[2026-07-04T16:36:48.747Z] GET https://fonts.gstatic.com/s/cormorantgaramond/v21/co3smX5slCNuHLi8bLeY9MK7whWMhyjYrGFEsdtdc62E6zd5rDD-iNM8.woff2 → pending (?ms, ?B)
