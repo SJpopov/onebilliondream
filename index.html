@@ -19,13 +19,13 @@
 <meta property="og:description" content="No promises. No charity. Just one person asking honestly: if 1 million people give $1, a dream comes true. Will you help?">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-<!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) — loaded but NOT activated until cookie consent (see bottom of page) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-YH9CQQEZ2R"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-YH9CQQEZ2R');
+  // No gtag('config', ...) here — analytics is enabled only after the user accepts.
 </script>
 <meta property="og:image" content="https://onebilliondream.com/og-image.png">
 <meta property="og:site_name" content="One Billion Dream">
@@ -415,24 +415,6 @@
     gap: 0.75rem;
     flex-wrap: wrap;
     margin-bottom: 2.5rem;
-  }
-
-  .amt-btn {
-    background: var(--dark);
-    border: 1px solid rgba(201,168,76,0.3);
-    color: var(--cream);
-    font-family: 'Space Mono', monospace;
-    font-size: 13px;
-    padding: 0.6rem 1.4rem;
-    border-radius: 2px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  .amt-btn:hover, .amt-btn.active {
-    background: var(--gold);
-    border-color: var(--gold);
-    color: var(--dark);
   }
 
   .donate-methods {
@@ -1142,26 +1124,6 @@
     }, 20);
   }
   animateCounter();
-  let currentAmount = 1;
-  function updatePayPal(amt) {
-    const url = `https://www.paypal.com/donate?hosted_button_id=8S8HPJ6H47EYA&amount=${amt}`;
-    document.getElementById('paypal-btn').href = url;
-    document.getElementById('card-paypal-link').href = url;
-  }
-  function setAmount(btn, amt) {
-    document.querySelectorAll('.amt-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    currentAmount = amt;
-    updatePayPal(amt);
-  }
-  function setCustomAmount(input) {
-    const amt = parseFloat(input.value);
-    if (amt > 0) {
-      document.querySelectorAll('.amt-btn').forEach(b => b.classList.remove('active'));
-      currentAmount = amt;
-      updatePayPal(amt);
-    }
-  }
 
   // Modals
   function openBankModal() { document.getElementById('bank-modal').classList.add('open'); }
@@ -1204,7 +1166,6 @@
   background:rgba(13,17,32,0.97);
   border-top:1px solid rgba(201,168,76,0.2);
   padding:1.25rem 2rem;
-  display:flex;
   align-items:center;
   justify-content:space-between;
   gap:1.5rem;
@@ -1251,19 +1212,22 @@
 </div>
 
 <script>
+  function enableAnalytics() {
+    gtag('config', 'G-YH9CQQEZ2R');
+  }
   function acceptCookies() {
     localStorage.setItem('cookie_consent', 'accepted');
     document.getElementById('cookie-banner').style.display = 'none';
+    enableAnalytics();
   }
   function rejectCookies() {
     localStorage.setItem('cookie_consent', 'rejected');
     document.getElementById('cookie-banner').style.display = 'none';
-    window['ga-disable-G-YH9CQQEZ2R'] = true;
   }
   if (!localStorage.getItem('cookie_consent')) {
     document.getElementById('cookie-banner').style.display = 'flex';
-  } else if (localStorage.getItem('cookie_consent') === 'rejected') {
-    window['ga-disable-G-YH9CQQEZ2R'] = true;
+  } else if (localStorage.getItem('cookie_consent') === 'accepted') {
+    enableAnalytics();
   }
 </script>
 </body>

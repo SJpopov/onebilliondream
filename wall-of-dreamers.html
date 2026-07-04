@@ -336,12 +336,24 @@
     const card = document.createElement('div');
     card.className = 'dream-card';
     card.style.animation = 'fadeIn 0.6s ease';
-    card.innerHTML = `
-      <span class="dream-quote">"</span>
-      <p class="dream-name">${name}</p>
-      <p class="dream-country">🌍 Just joined</p>
-      <p class="dream-text">${dream || 'A dreamer.'}</p>
-    `;
+
+    const quote = document.createElement('span');
+    quote.className = 'dream-quote';
+    quote.textContent = '"';
+
+    const nameEl = document.createElement('p');
+    nameEl.className = 'dream-name';
+    nameEl.textContent = name;
+
+    const countryEl = document.createElement('p');
+    countryEl.className = 'dream-country';
+    countryEl.textContent = '🌍 Just joined';
+
+    const textEl = document.createElement('p');
+    textEl.className = 'dream-text';
+    textEl.textContent = dream || 'A dreamer.';
+
+    card.append(quote, nameEl, countryEl, textEl);
     document.getElementById('dreams-grid').prepend(card);
     document.getElementById('input-name').value = '';
     document.getElementById('input-dream').value = '';
