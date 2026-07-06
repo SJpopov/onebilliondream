@@ -7,7 +7,6 @@
 <!-- Primary SEO -->
 <title>One Billion Dream — Help One Person's Dream Come True for $1</title>
 <meta name="description" content="One person, one dream. If 1 million people each donate $1, a dream comes true. Honest giving via PayPal, Revolut, crypto, or bank — no charity, no promises.">
-<meta name="keywords" content="donate $1, one billion dream, honest donation, help someone's dream, crowdfunding, dream come true, financial freedom, donate to a person, paypal donate, crypto donate, revolut donate, bank transfer donation, donate online, space dream, personal fundraising, one dollar donation, help a dreamer, unique donation site, transparent fundraising, donate small amount">
 <meta name="author" content="One Billion Dream">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://onebilliondream.com">
@@ -72,7 +71,7 @@
     --cream: #f5f0e8;
     --dark: #07090f;
     --dark2: #0d1120;
-    --muted: rgba(245,240,232,0.45);
+    --muted: rgba(245,240,232,0.55);
     --blue: #4a9eda;
     --blue-dim: #2c6a9a;
     --blue-glow: rgba(74,158,218,0.12);
@@ -103,19 +102,6 @@
     50% { opacity: var(--peak, 0.8); }
   }
 
-  /* VIDEO BG */
-  #hero-video {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    opacity: 1;
-    pointer-events: none;
-  }
-
   /* LAYOUT */
   section { position: relative; z-index: 1; }
 
@@ -132,24 +118,20 @@
     overflow: hidden;
   }
 
+  /* VIDEO BG */
   #hero-video {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center top;
     z-index: 0;
     opacity: 0.6;
+    pointer-events: none;
   }
 
-  #hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(7,9,15,0.3) 0%, rgba(7,9,15,0.7) 100%);
-    z-index: 1;
-  }
-
-  #hero > *:not(#hero-video):not(#hero-overlay) {
+  #hero > *:not(#hero-video) {
     position: relative;
     z-index: 2;
   }
@@ -415,14 +397,6 @@
     font-size: 1rem;
     color: var(--muted);
     margin-bottom: 3rem;
-  }
-
-  .amount-row {
-    display: flex;
-    justify-content: center;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    margin-bottom: 2.5rem;
   }
 
   .donate-methods {
@@ -711,6 +685,16 @@
     .modal-row span:first-child { font-size: 11px; }
     .modal-row span:last-child { text-align: left; font-size: 0.95rem; }
   }
+
+  /* Respect users who prefer less motion (accessibility) */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    html { scroll-behavior: auto; }
+  }
 </style>
 </head>
 <body>
@@ -736,7 +720,7 @@
 <section id="counter-section">
   <p class="counter-label">Total donated so far</p>
   <p class="counter-number" id="counter">$0</p>
-  <p class="counter-sub">of $1,000,000,000 goal &nbsp;·&nbsp; 0 donors</p>
+  <p class="counter-sub">of $1,000,000,000 goal<span id="donors-part"></span></p>
 
   <div class="math-row">
     <span class="math-pill">1,000,000 people</span>
@@ -836,7 +820,7 @@
           <line x1="11" y1="22" x2="5" y2="32" stroke="#f5f0e8" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
           <line x1="11" y1="22" x2="17" y2="32" stroke="#f5f0e8" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
         </svg></a>
-        <span style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--gold);text-transform:uppercase;">not enough</span>
+        <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--gold);text-transform:uppercase;">not enough</span>
       </div>
       <span style="font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);white-space:nowrap;">Goal: $1,000,000,000</span>
     </div>
@@ -892,8 +876,6 @@
     <a class="share-btn" id="wa-share" href="#" target="_blank">WhatsApp</a>
     <a class="share-btn" id="tg-share" href="#" target="_blank">Telegram</a>
     <a class="share-btn" id="rd-share" href="#" target="_blank">Reddit</a>
-    <a class="share-btn" href="https://www.tiktok.com" target="_blank">TikTok</a>
-    <a class="share-btn" href="https://www.instagram.com" target="_blank">Instagram</a>
     <button class="share-btn" onclick="copyLink()">Copy Link</button>
   </div>
 </section>
@@ -911,35 +893,35 @@
       <span>Account Name</span>
       <span style="display:flex;align-items:center;gap:0.5rem;">
         Stefan Popov
-        <button onclick="copyAddr(this,'Stefan Popov')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+        <button onclick="copyAddr(this,'Stefan Popov')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
       </span>
     </div>
     <div class="modal-row">
       <span>IBAN</span>
       <span style="display:flex;align-items:center;gap:0.5rem;">
         LT87 3250 0447 2971 3748
-        <button onclick="copyAddr(this,'LT873250044729713748')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+        <button onclick="copyAddr(this,'LT873250044729713748')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
       </span>
     </div>
     <div class="modal-row">
       <span>BIC / SWIFT</span>
       <span style="display:flex;align-items:center;gap:0.5rem;">
         REVOLT21
-        <button onclick="copyAddr(this,'REVOLT21')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+        <button onclick="copyAddr(this,'REVOLT21')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
       </span>
     </div>
     <div class="modal-row">
       <span>Bank</span>
       <span style="display:flex;align-items:center;gap:0.5rem;">
         Revolut Bank UAB, Vilnius
-        <button onclick="copyAddr(this,'Revolut Bank UAB, Konstitucijos ave. 21B, 08130, Vilnius, Lithuania')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+        <button onclick="copyAddr(this,'Revolut Bank UAB, Konstitucijos ave. 21B, 08130, Vilnius, Lithuania')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
       </span>
     </div>
     <div class="modal-row">
       <span>Reference</span>
       <span style="display:flex;align-items:center;gap:0.5rem;">
         DREAM
-        <button onclick="copyAddr(this,'DREAM')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+        <button onclick="copyAddr(this,'DREAM')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
       </span>
     </div>
     <p style="margin-top:1.5rem;font-size:0.85rem;color:var(--muted);font-style:italic;">Any amount is welcome. Even $1.</p>
@@ -956,7 +938,7 @@
       <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
           <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">BTC</span>
-          <button onclick="copyAddr(this,'bc1q9zsep5cspgu3zeyh5hlg5tyvra59duj2wq27km')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+          <button onclick="copyAddr(this,'bc1q9zsep5cspgu3zeyh5hlg5tyvra59duj2wq27km')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
         </div>
         <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">bc1q9zsep5cspgu3zeyh5hlg5tyvra59duj2wq27km</div>
       </div>
@@ -964,7 +946,7 @@
       <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
           <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">ETH / USDT / USDC / BNB</span>
-          <button onclick="copyAddr(this,'0x48bbe31fa584b52b4fce3e7cae48cadfbf50a9b2')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+          <button onclick="copyAddr(this,'0x48bbe31fa584b52b4fce3e7cae48cadfbf50a9b2')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
         </div>
         <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">0x48bbe31fa584b52b4fce3e7cae48cadfbf50a9b2</div>
       </div>
@@ -972,7 +954,7 @@
       <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
           <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">SOL</span>
-          <button onclick="copyAddr(this,'62s6iRJpHbYENpj96Nm6fncqBTygTHrSjEvUVWANcKfV')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+          <button onclick="copyAddr(this,'62s6iRJpHbYENpj96Nm6fncqBTygTHrSjEvUVWANcKfV')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
         </div>
         <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">62s6iRJpHbYENpj96Nm6fncqBTygTHrSjEvUVWANcKfV</div>
       </div>
@@ -980,7 +962,7 @@
       <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
           <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">DOGE</span>
-          <button onclick="copyAddr(this,'D9G7cNbGhWxocSimXNMiRCZpCeS4C5aV6p')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+          <button onclick="copyAddr(this,'D9G7cNbGhWxocSimXNMiRCZpCeS4C5aV6p')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
         </div>
         <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">D9G7cNbGhWxocSimXNMiRCZpCeS4C5aV6p</div>
       </div>
@@ -988,7 +970,7 @@
       <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
           <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">ADA</span>
-          <button onclick="copyAddr(this,'addr1q903k5pwzhf46fjjh7dp7047t9ard89hulmpdj3jr4mj8spp7xaqmgslpxklpwjqck3rluqzrvuw59dsvcwe5rhs8dxsyhkl66')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+          <button onclick="copyAddr(this,'addr1q903k5pwzhf46fjjh7dp7047t9ard89hulmpdj3jr4mj8spp7xaqmgslpxklpwjqck3rluqzrvuw59dsvcwe5rhs8dxsyhkl66')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
         </div>
         <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">addr1q903k5pwzhf46fjjh7dp7047t9ard89hulmpdj3jr4mj8spp7xaqmgslpxklpwjqck3rluqzrvuw59dsvcwe5rhs8dxsyhkl66</div>
       </div>
@@ -996,7 +978,7 @@
       <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
           <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">TRX / USDT TRC20</span>
-          <button onclick="copyAddr(this,'TKfTomhzn5n67euckht3Dz34YTrQJN2m1s')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+          <button onclick="copyAddr(this,'TKfTomhzn5n67euckht3Dz34YTrQJN2m1s')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
         </div>
         <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">TKfTomhzn5n67euckht3Dz34YTrQJN2m1s</div>
       </div>
@@ -1004,7 +986,7 @@
       <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
           <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">XLM</span>
-          <button onclick="copyAddr(this,'GCW3WED6SDHAWABJNMODJN3MU5WO7XE2Q7S23VMCWZWXL7NAB23DSF3D')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+          <button onclick="copyAddr(this,'GCW3WED6SDHAWABJNMODJN3MU5WO7XE2Q7S23VMCWZWXL7NAB23DSF3D')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
         </div>
         <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">GCW3WED6SDHAWABJNMODJN3MU5WO7XE2Q7S23VMCWZWXL7NAB23DSF3D</div>
       </div>
@@ -1012,7 +994,7 @@
       <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
           <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">TON</span>
-          <button onclick="copyAddr(this,'UQDgV0oRmvWrwA2yarptc70V15C6E_83tkxtcJSkzZmXbi2T')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+          <button onclick="copyAddr(this,'UQDgV0oRmvWrwA2yarptc70V15C6E_83tkxtcJSkzZmXbi2T')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
         </div>
         <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">UQDgV0oRmvWrwA2yarptc70V15C6E_83tkxtcJSkzZmXbi2T</div>
       </div>
@@ -1020,7 +1002,7 @@
       <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
           <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">LTC</span>
-          <button onclick="copyAddr(this,'ltc1q8fu9euv8zelfuln5vc776tn7z8qwtj6sr7755w')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+          <button onclick="copyAddr(this,'ltc1q8fu9euv8zelfuln5vc776tn7z8qwtj6sr7755w')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
         </div>
         <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">ltc1q8fu9euv8zelfuln5vc776tn7z8qwtj6sr7755w</div>
       </div>
@@ -1028,7 +1010,7 @@
       <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
           <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">ZEC</span>
-          <button onclick="copyAddr(this,'t1Nd9AoiQKhkBC2Boj2KQ26ChgMLidyAxgM')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+          <button onclick="copyAddr(this,'t1Nd9AoiQKhkBC2Boj2KQ26ChgMLidyAxgM')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
         </div>
         <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">t1Nd9AoiQKhkBC2Boj2KQ26ChgMLidyAxgM</div>
       </div>
@@ -1108,8 +1090,9 @@
   document.head.appendChild(styleEl);
 
   // ============================================
-  // СМЕНИ САМО ТАЗИ ЦИФРА:
-  const TOTAL_RAISED = 947;
+  // СМЕНИ САМО ТЕЗИ ЦИФРИ:
+  const TOTAL_RAISED = 947;   // събрана сума в $
+  const TOTAL_DONORS = 0;     // брой дарители (при 0 редът се скрива)
   // ============================================
   const GOAL = 1000000000;
   const pct = (TOTAL_RAISED / GOAL) * 100;
@@ -1118,6 +1101,12 @@
   document.getElementById('progress-bar').style.width = Math.max(pct, 1) + '%';
   document.getElementById('raised-amount').textContent = '$' + TOTAL_RAISED.toLocaleString();
   document.getElementById('raised-pct').textContent = pct < 0.01 ? '<0.01%' : pct.toFixed(pct < 1 ? 4 : 2) + '%';
+
+  // Donors line (hidden while TOTAL_DONORS is 0)
+  if (TOTAL_DONORS > 0) {
+    document.getElementById('donors-part').innerHTML =
+      ' &nbsp;·&nbsp; ' + TOTAL_DONORS.toLocaleString() + ' donor' + (TOTAL_DONORS === 1 ? '' : 's');
+  }
 
   // Counter (Total donated so far)
   function animateCounter() {
