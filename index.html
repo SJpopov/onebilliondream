@@ -118,8 +118,8 @@
     overflow: hidden;
   }
 
-  /* VIDEO BG */
-  #hero-video {
+  /* VIDEO BG (two copies cross-fade for a seamless loop) */
+  .bg-video {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -129,9 +129,10 @@
     z-index: 0;
     opacity: 0.6;
     pointer-events: none;
+    transition: opacity 1.4s linear;
   }
 
-  #hero > *:not(#hero-video) {
+  #hero > *:not(.bg-video) {
     position: relative;
     z-index: 2;
   }
@@ -702,8 +703,11 @@
 <!-- STARS -->
 <div id="stars"></div>
 
-<!-- VIDEO BACKGROUND -->
-<video id="hero-video" autoplay muted loop playsinline>
+<!-- VIDEO BACKGROUND (B copy fades in near the end of A to hide the loop seam) -->
+<video id="hero-video" class="bg-video" autoplay muted playsinline>
+  <source src="857251-hd_1620_1080_25fps.mp4#t=0.001" type="video/mp4">
+</video>
+<video id="hero-video-b" class="bg-video" muted playsinline preload="auto" style="opacity:0;">
   <source src="857251-hd_1620_1080_25fps.mp4#t=0.001" type="video/mp4">
 </video>
 
@@ -731,6 +735,7 @@
     <span class="math-x">=</span>
     <span class="math-pill" style="color:var(--gold); border-color:rgba(201,168,76,0.4)">$12,000,000</span>
   </div>
+  <p style="margin-top:1.75rem;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.18em;color:var(--gold-dim);text-transform:uppercase;">That's year one. The dream: $1,000,000,000.</p>
 </section>
 
 <!-- STORY -->
@@ -1088,6 +1093,31 @@
     }
   `;
   document.head.appendChild(styleEl);
+
+  // Seamless video loop: near the end of the active copy, the standby copy
+  // starts from 0 and the two cross-fade, hiding the visible restart jump.
+  const vidA = document.getElementById('hero-video');
+  const vidB = document.getElementById('hero-video-b');
+  let activeVid = vidA, standbyVid = vidB;
+  const FADE = 1.4; // seconds — keep in sync with .bg-video transition
+  setInterval(() => {
+    if (!activeVid.duration || activeVid.paused) return;
+    if (activeVid.duration - activeVid.currentTime <= FADE) {
+      standbyVid.currentTime = 0;
+      standbyVid.play();
+      standbyVid.style.opacity = '0.6';
+      activeVid.style.opacity = '0';
+      const prev = activeVid;
+      activeVid = standbyVid;
+      standbyVid = prev;
+      setTimeout(() => prev.pause(), FADE * 1000 + 100);
+    }
+  }, 250);
+
+  // Pause the background video for users who prefer reduced motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    vidA.pause();
+  }
 
   // ============================================
   // СМЕНИ САМО ТЕЗИ ЦИФРИ:

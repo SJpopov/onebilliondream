@@ -235,6 +235,16 @@
     .dreams-grid { grid-template-columns: 1fr; }
     h1 { font-size: 2.5rem; }
   }
+
+  /* Respect users who prefer less motion (accessibility) */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    html { scroll-behavior: auto; }
+  }
 </style>
 </head>
 <body>
@@ -260,53 +270,15 @@
   <textarea class="form-textarea" id="input-dream" placeholder="What's your dream? Share it with the world..."></textarea>
 
   <button class="submit-btn" onclick="submitDream()">Add my name to the wall →</button>
-  <p class="form-note">Your message will appear on the wall after review.</p>
+  <p class="form-note" id="form-note">Your message is sent to us by email and appears on the wall after review.</p>
 </section>
 
 <section id="wall">
   <p class="wall-title">— Dreamers who have donated —</p>
   <div class="dreams-grid" id="dreams-grid">
 
-    <div class="dream-card">
-      <span class="dream-quote">"</span>
-      <p class="dream-name">Anonymous</p>
-      <p class="dream-country">🌍 Unknown</p>
-      <p class="dream-text">I believe in the math. $1 from a million people changes everything.</p>
-    </div>
-
-    <div class="dream-card">
-      <span class="dream-quote">"</span>
-      <p class="dream-name">Sarah</p>
-      <p class="dream-country">🇺🇸 United States</p>
-      <p class="dream-text">My dream is to sail around the world one day. Keep dreaming.</p>
-    </div>
-
-    <div class="dream-card">
-      <span class="dream-quote">"</span>
-      <p class="dream-name">Marco</p>
-      <p class="dream-country">🇮🇹 Italy</p>
-      <p class="dream-text">Honest enough. I donated because I respect the audacity.</p>
-    </div>
-
-    <div class="dream-card">
-      <span class="dream-quote">"</span>
-      <p class="dream-name">Anonymous</p>
-      <p class="dream-country">🌍 Europe</p>
-      <p class="dream-text">To anyone reading this — what's your dream? Chase it.</p>
-    </div>
-
-    <div class="dream-card">
-      <span class="dream-quote">"</span>
-      <p class="dream-name">Yuki</p>
-      <p class="dream-country">🇯🇵 Japan</p>
-      <p class="dream-text">My dream is to open a small bookshop by the sea. One dollar for yours.</p>
-    </div>
-
-    <div class="dream-card">
-      <span class="dream-quote">"</span>
-      <p class="dream-name">Anonymous</p>
-      <p class="dream-country">🌍 Unknown</p>
-      <p class="dream-text">The math is simple. The dream is real. I'm in.</p>
+    <div class="dream-card" style="grid-column:1/-1;text-align:center;padding:3rem 1.5rem;">
+      <p class="dream-text" style="font-size:1.15rem;">The wall is waiting for its first dreamer.<br>It could be you.</p>
     </div>
 
   </div>
@@ -333,30 +305,17 @@
       alert('Please add your name or a dream before submitting.');
       return;
     }
-    const card = document.createElement('div');
-    card.className = 'dream-card';
-    card.style.animation = 'fadeIn 0.6s ease';
-
-    const quote = document.createElement('span');
-    quote.className = 'dream-quote';
-    quote.textContent = '"';
-
-    const nameEl = document.createElement('p');
-    nameEl.className = 'dream-name';
-    nameEl.textContent = name;
-
-    const countryEl = document.createElement('p');
-    countryEl.className = 'dream-country';
-    countryEl.textContent = '🌍 Just joined';
-
-    const textEl = document.createElement('p');
-    textEl.className = 'dream-text';
-    textEl.textContent = dream || 'A dreamer.';
-
-    card.append(quote, nameEl, countryEl, textEl);
-    document.getElementById('dreams-grid').prepend(card);
-    document.getElementById('input-name').value = '';
-    document.getElementById('input-dream').value = '';
+    // Opens the visitor's email app with the submission pre-filled.
+    // Nothing goes on the wall until it's reviewed and added manually.
+    const subject = encodeURIComponent('Wall of Dreamers — new submission');
+    const body = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Dream: ' + (dream || '(none)') + '\n\n' +
+      '— sent from onebilliondream.com/wall-of-dreamers'
+    );
+    window.location.href = 'mailto:dreambig@onebilliondream.com?subject=' + subject + '&body=' + body;
+    document.getElementById('form-note').textContent =
+      'Your email app just opened — press send, and after review your dream joins the wall. ✨';
   }
 </script>
 
