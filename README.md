@@ -2,13 +2,13 @@
 
 **One person. One dream. One dollar.**
 
-If a million people each donate $1, one person's dream comes true. No charity cause, no product, no promises — just an honest ask and simple math.
+The first milestone is simple: one million people giving $1 each. That is the first step toward the long-term billion-dollar dream. No charity claim, no product, no promises — just an honest ask and simple math.
 
 🌐 **[onebilliondream.com](https://onebilliondream.com)**
 
 ## What it is
 
-A static site with a single honest message: help one person reach a dream by giving $1. Donations via PayPal, Revolut, crypto, and bank transfer (IBAN).
+A static site with a single honest message: help one person take the first step toward an impossible dream by giving $1. The first milestone is $1 million; the long-term dream is $1 billion. Voluntary personal contributions are accepted via PayPal, Revolut, crypto, and bank transfer (IBAN).
 
 ## Stack
 
@@ -18,7 +18,7 @@ A static site with a single honest message: help one person reach a dream by giv
 
 ## Pages
 
-- `index.html` — the main page (the story + donation methods)
+- `index.html` — the main page (the story + contribution methods)
 - `wall-of-dreamers.html` — a wall where supporters leave their name and dream
 
 ---
