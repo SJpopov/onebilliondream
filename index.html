@@ -18,14 +18,7 @@
 <meta property="og:description" content="One million people. One dollar each. One impossible dream. Help take the first step toward One Billion Dream.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-<!-- Google tag (gtag.js) — loaded but NOT activated until cookie consent (see bottom of page) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YH9CQQEZ2R"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  // No gtag('config', ...) here — analytics is enabled only after the user accepts.
-</script>
+<!-- Google Analytics is loaded only after explicit analytics consent. -->
 <meta property="og:image" content="https://onebilliondream.com/og-image.png">
 <meta property="og:site_name" content="One Billion Dream">
 <meta property="og:locale" content="en_US">
@@ -618,6 +611,181 @@
     transform: translateY(-2px);
   }
 
+  /* PRIVACY CONTROLS */
+  .consent-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding: 1.25rem 2rem;
+    background: rgba(13,17,32,0.98);
+    border-top: 1px solid rgba(201,168,76,0.25);
+    box-shadow: 0 -12px 40px rgba(0,0,0,0.35);
+  }
+
+  .consent-copy {
+    flex: 1;
+    min-width: 240px;
+    font-size: 1rem;
+    color: rgba(245,240,232,0.72);
+    line-height: 1.5;
+  }
+
+  .consent-copy strong {
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  .consent-copy a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  .consent-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .consent-btn,
+  .cookie-settings-link {
+    border-radius: 2px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .consent-btn {
+    padding: 0.65rem 1.1rem;
+  }
+
+  .consent-btn-primary {
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    color: var(--dark);
+  }
+
+  .consent-btn-secondary {
+    background: transparent;
+    border: 1px solid rgba(245,240,232,0.25);
+    color: rgba(245,240,232,0.75);
+  }
+
+  .consent-btn:hover,
+  .consent-btn:focus-visible {
+    border-color: var(--gold);
+    outline: none;
+  }
+
+  .consent-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 210;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: rgba(3,5,10,0.88);
+  }
+
+  .consent-panel {
+    position: relative;
+    width: min(560px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 2rem;
+    background: var(--dark2);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 3px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.55);
+  }
+
+  .consent-panel h2 {
+    margin-bottom: 0.5rem;
+    color: var(--cream);
+    font-size: 1.8rem;
+    font-weight: 300;
+  }
+
+  .consent-panel-intro {
+    margin-bottom: 1.5rem;
+    color: var(--muted);
+    font-size: 1rem;
+  }
+
+  .consent-option {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(245,240,232,0.08);
+  }
+
+  .consent-option h3 {
+    color: var(--cream);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .consent-option p {
+    margin-top: 0.35rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .consent-option input {
+    width: 20px;
+    height: 20px;
+    margin-top: 0.2rem;
+    flex: 0 0 auto;
+    accent-color: var(--gold);
+  }
+
+  .consent-option-status {
+    flex: 0 0 auto;
+    color: var(--gold);
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .consent-panel-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .cookie-settings-link {
+    padding: 0;
+    background: transparent;
+    border: 0;
+    color: rgba(245,240,232,0.35);
+  }
+
+  .cookie-settings-link:hover,
+  .cookie-settings-link:focus-visible {
+    color: var(--gold);
+    outline: none;
+  }
+
   /* FOOTER */
   footer {
     text-align: center;
@@ -678,6 +846,12 @@
     .share-btns { gap: 0.5rem; }
     .share-btn { font-size: 11px; padding: 0.7rem 1rem; }
     .share-text-box { font-size: 1rem; }
+    .consent-banner { align-items: stretch; padding: 1rem; }
+    .consent-actions { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
+    .consent-actions .consent-btn-primary { grid-column: 1 / -1; }
+    .consent-btn { width: 100%; }
+    .consent-panel { padding: 1.5rem; }
+    .consent-panel-actions { display: grid; grid-template-columns: 1fr; }
 
     .section-tag { font-size: 11px; }
 
@@ -838,7 +1012,7 @@
   </div>
 
   <div class="donate-methods">
-    <a id="paypal-btn" class="donate-btn btn-paypal" href="https://www.paypal.com/donate?hosted_button_id=8S8HPJ6H47EYA&locale.x=en_US" target="_blank">
+    <a id="paypal-btn" class="donate-btn btn-paypal" href="https://www.paypal.com/donate?hosted_button_id=8S8HPJ6H47EYA&locale.x=en_US" target="_blank" rel="noopener noreferrer">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.59 3.025-2.566 4.643-5.813 4.643H12.55c-.524 0-.968.382-1.05.9L10.317 18.5l-.314 1.988a.407.407 0 0 0 .403.469h3.096c.452 0 .836-.33.906-.777l.037-.193.72-4.568.046-.252a.915.915 0 0 1 .905-.777h.57c3.694 0 6.586-1.5 7.43-5.84.352-1.808.17-3.317-.894-4.381z"/></svg>
       PayPal
     </a>
@@ -846,7 +1020,7 @@
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
       Credit / Debit Card
     </button>
-    <a class="donate-btn btn-revolut" href="https://revolut.me/stefanjpopov" target="_blank">
+    <a id="revolut-btn" class="donate-btn btn-revolut" href="https://revolut.me/stefanjpopov" target="_blank" rel="noopener noreferrer">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><path d="M10 7h4v2.5l2.5 2.5L14 14.5V17h-4v-2.5L7.5 12l2.5-2.5V7z"/></svg>
       Revolut
     </a>
@@ -876,17 +1050,18 @@
   </div>
 
   <div class="share-btns">
-    <a class="share-btn" id="tw-share" href="#" target="_blank">Twitter / X</a>
-    <a class="share-btn" id="fb-share" href="#" target="_blank">Facebook</a>
-    <a class="share-btn" id="wa-share" href="#" target="_blank">WhatsApp</a>
-    <a class="share-btn" id="tg-share" href="#" target="_blank">Telegram</a>
-    <a class="share-btn" id="rd-share" href="#" target="_blank">Reddit</a>
-    <button class="share-btn" onclick="copyLink()">Copy Link</button>
+    <a class="share-btn" id="tw-share" href="#" target="_blank" rel="noopener noreferrer" data-share-method="twitter">Twitter / X</a>
+    <a class="share-btn" id="fb-share" href="#" target="_blank" rel="noopener noreferrer" data-share-method="facebook">Facebook</a>
+    <a class="share-btn" id="wa-share" href="#" target="_blank" rel="noopener noreferrer" data-share-method="whatsapp">WhatsApp</a>
+    <a class="share-btn" id="tg-share" href="#" target="_blank" rel="noopener noreferrer" data-share-method="telegram">Telegram</a>
+    <a class="share-btn" id="rd-share" href="#" target="_blank" rel="noopener noreferrer" data-share-method="reddit">Reddit</a>
+    <button class="share-btn" onclick="copyLink(this)">Copy Link</button>
   </div>
 </section>
 
 <footer>
   © 2026 One Billion Dream &nbsp;·&nbsp; No promises were harmed in the making of this site.
+  &nbsp;·&nbsp; <button class="cookie-settings-link" type="button" onclick="openConsentSettings()">Cookie settings</button>
 </footer>
 
 <!-- BANK MODAL -->
@@ -1031,7 +1206,7 @@
     <button class="modal-close" onclick="closeModal('card-modal')">×</button>
     <h3>Pay by Card</h3>
     <p style="color:var(--muted);font-size:1rem;margin-bottom:1.5rem;">Card payments are processed via PayPal — no account needed.</p>
-    <a id="card-paypal-link" href="https://www.paypal.com/donate?hosted_button_id=8S8HPJ6H47EYA&locale.x=en_US" target="_blank" class="donate-btn btn-paypal" style="text-decoration:none;display:flex;">
+    <a id="card-paypal-link" href="https://www.paypal.com/donate?hosted_button_id=8S8HPJ6H47EYA&locale.x=en_US" target="_blank" rel="noopener noreferrer" class="donate-btn btn-paypal" style="text-decoration:none;display:flex;">
       Continue with Card via PayPal
     </a>
   </div>
@@ -1154,9 +1329,15 @@
   animateCounter();
 
   // Modals
-  function openBankModal() { document.getElementById('bank-modal').classList.add('open'); }
+  function openBankModal() {
+    trackAnalyticsEvent('select_payment_method', { payment_method: 'bank_transfer' });
+    document.getElementById('bank-modal').classList.add('open');
+  }
   function openCryptoModal() { document.getElementById('crypto-modal').classList.add('open'); }
-  function openCardModal() { document.getElementById('card-modal').classList.add('open'); }
+  function openCardModal() {
+    trackAnalyticsEvent('select_payment_method', { payment_method: 'card' });
+    document.getElementById('card-modal').classList.add('open');
+  }
   function closeModal(id) { document.getElementById(id).classList.remove('open'); }
 
   // Share links
@@ -1168,6 +1349,22 @@
   document.getElementById('tg-share').href = `https://t.me/share/url?url=${url}&text=${txt}`;
   document.getElementById('rd-share').href = `https://www.reddit.com/submit?url=${url}&title=${txt}`;
 
+  document.getElementById('paypal-btn').addEventListener('click', () => {
+    trackAnalyticsEvent('select_payment_method', { payment_method: 'paypal' });
+  });
+  document.getElementById('revolut-btn').addEventListener('click', () => {
+    trackAnalyticsEvent('select_payment_method', { payment_method: 'revolut' });
+  });
+  document.querySelectorAll('[data-share-method]').forEach(link => {
+    link.addEventListener('click', () => {
+      trackAnalyticsEvent('share', {
+        method: link.dataset.shareMethod,
+        content_type: 'website',
+        item_id: 'homepage'
+      });
+    });
+  });
+
   function copyAddr(btn, addr) {
     navigator.clipboard.writeText(addr);
     const orig = btn.textContent;
@@ -1176,86 +1373,267 @@
     setTimeout(() => { btn.textContent = orig; btn.style.color = ''; }, 2000);
   }
 
-  function copyLink() {
+  function copyLink(btn) {
     navigator.clipboard.writeText('https://onebilliondream.com');
-    const btn = event.target;
+    trackAnalyticsEvent('share', {
+      method: 'copy_link',
+      content_type: 'website',
+      item_id: 'homepage'
+    });
     btn.textContent = 'Copied!';
     setTimeout(() => btn.textContent = 'Copy Link', 2000);
   }
 
 </script>
 
-<!-- COOKIE BANNER -->
-<div id="cookie-banner" style="
-  display:none;
-  position:fixed;
-  bottom:0;left:0;right:0;
-  z-index:200;
-  background:rgba(13,17,32,0.97);
-  border-top:1px solid rgba(201,168,76,0.2);
-  padding:1.25rem 2rem;
-  align-items:center;
-  justify-content:space-between;
-  gap:1.5rem;
-  flex-wrap:wrap;
-">
-  <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(245,240,232,0.7);flex:1;min-width:200px;">
-    This site uses cookies to analyze traffic via Google Analytics.
-    <a href="https://policies.google.com/privacy" target="_blank" style="color:#c9a84c;text-decoration:none;">Learn more</a>
+<!-- PRIVACY CONTROLS -->
+<section id="consent-banner" class="consent-banner" role="dialog" aria-labelledby="consent-title" hidden>
+  <p class="consent-copy">
+    <strong id="consent-title">Your privacy, your choice.</strong>
+    Optional analytics helps us understand which parts of the site are useful.
+    Google Analytics stays completely blocked until you allow it.
+    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google privacy information</a>
   </p>
-  <div style="display:flex;gap:0.75rem;flex-shrink:0;">
-    <button onclick="rejectCookies()" style="
-      background:transparent;
-      border:1px solid rgba(245,240,232,0.2);
-      color:rgba(245,240,232,0.5);
-      font-family:'Space Mono',monospace;
-      font-size:11px;
-      letter-spacing:0.1em;
-      text-transform:uppercase;
-      padding:0.6rem 1.25rem;
-      border-radius:2px;
-      cursor:pointer;
-      transition:all 0.2s;
-    " onmouseover="this.style.borderColor='rgba(245,240,232,0.4)';this.style.color='rgba(245,240,232,0.8)'"
-       onmouseout="this.style.borderColor='rgba(245,240,232,0.2)';this.style.color='rgba(245,240,232,0.5)'">
-      Reject
-    </button>
-    <button onclick="acceptCookies()" style="
-      background:#c9a84c;
-      border:1px solid #c9a84c;
-      color:#07090f;
-      font-family:'Space Mono',monospace;
-      font-size:11px;
-      letter-spacing:0.1em;
-      text-transform:uppercase;
-      padding:0.6rem 1.25rem;
-      border-radius:2px;
-      cursor:pointer;
-      transition:all 0.2s;
-    " onmouseover="this.style.background='transparent';this.style.color='#c9a84c'"
-       onmouseout="this.style.background='#c9a84c';this.style.color='#07090f'">
-      Accept
-    </button>
+  <div class="consent-actions">
+    <button class="consent-btn consent-btn-secondary" type="button" onclick="rejectAllConsent()">Reject</button>
+    <button class="consent-btn consent-btn-secondary" type="button" onclick="openConsentSettings()">Settings</button>
+    <button class="consent-btn consent-btn-primary" type="button" onclick="acceptAnalyticsConsent()">Accept analytics</button>
+  </div>
+</section>
+
+<div id="consent-settings" class="consent-overlay" role="dialog" aria-modal="true" aria-labelledby="consent-settings-title" onclick="if(event.target===this) closeConsentSettings()" hidden>
+  <div class="consent-panel">
+    <button class="modal-close" type="button" aria-label="Close cookie settings" onclick="closeConsentSettings()">×</button>
+    <h2 id="consent-settings-title">Privacy settings</h2>
+    <p class="consent-panel-intro">Choose what this site may use. You can change your decision at any time from the footer.</p>
+
+    <div class="consent-option">
+      <div>
+        <h3>Necessary storage</h3>
+        <p>Remembers only your privacy choice. It does not track visits and cannot be disabled.</p>
+      </div>
+      <span class="consent-option-status">Always active</span>
+    </div>
+
+    <label class="consent-option" for="analytics-consent-toggle">
+      <div>
+        <h3>Analytics</h3>
+        <p>Allows Google Analytics and anonymous interaction events such as reaching the contribution section, choosing a payment method, or sharing the site.</p>
+      </div>
+      <input id="analytics-consent-toggle" type="checkbox">
+    </label>
+
+    <div class="consent-option" aria-disabled="true">
+      <div>
+        <h3>Marketing</h3>
+        <p>No advertising platform is connected. Marketing tracking is not used and remains disabled.</p>
+      </div>
+      <span class="consent-option-status">Not used</span>
+    </div>
+
+    <div class="consent-panel-actions">
+      <button class="consent-btn consent-btn-secondary" type="button" onclick="rejectAllConsent()">Reject all</button>
+      <button class="consent-btn consent-btn-primary" type="button" onclick="saveConsentSettings()">Save choices</button>
+    </div>
   </div>
 </div>
 
 <script>
-  function enableAnalytics() {
-    gtag('config', 'G-YH9CQQEZ2R');
+  const GA_MEASUREMENT_ID = 'G-YH9CQQEZ2R';
+  const CONSENT_STORAGE_KEY = 'obd_privacy_consent';
+  const CONSENT_VERSION = 2;
+  const IS_LOCAL_ANALYTICS_TEST = ['localhost', '127.0.0.1'].includes(location.hostname);
+  let analyticsLoaded = false;
+  let consentState = readStoredConsent();
+  let settingsOpenedFromBanner = false;
+  let donateSectionTracked = false;
+
+  function readStoredConsent() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(CONSENT_STORAGE_KEY));
+      if (
+        saved &&
+        saved.version === CONSENT_VERSION &&
+        typeof saved.analytics === 'boolean' &&
+        saved.marketing === false
+      ) {
+        return saved;
+      }
+    } catch (error) {
+      // A blocked or malformed localStorage entry should never enable tracking.
+    }
+    return null;
   }
-  function acceptCookies() {
-    localStorage.setItem('cookie_consent', 'accepted');
-    document.getElementById('cookie-banner').style.display = 'none';
-    enableAnalytics();
+
+  function hasAnalyticsConsent() {
+    return consentState?.analytics === true;
   }
-  function rejectCookies() {
-    localStorage.setItem('cookie_consent', 'rejected');
-    document.getElementById('cookie-banner').style.display = 'none';
+
+  function storeConsent(analyticsAllowed) {
+    consentState = {
+      version: CONSENT_VERSION,
+      analytics: analyticsAllowed,
+      marketing: false,
+      updatedAt: new Date().toISOString()
+    };
+    try {
+      localStorage.setItem(CONSENT_STORAGE_KEY, JSON.stringify(consentState));
+      localStorage.removeItem('cookie_consent');
+    } catch (error) {
+      // The choice still applies for the current page if storage is unavailable.
+    }
   }
-  if (!localStorage.getItem('cookie_consent')) {
-    document.getElementById('cookie-banner').style.display = 'flex';
-  } else if (localStorage.getItem('cookie_consent') === 'accepted') {
-    enableAnalytics();
+
+  function loadAnalytics() {
+    if (!hasAnalyticsConsent()) return;
+
+    window[`ga-disable-${GA_MEASUREMENT_ID}`] = false;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function() { window.dataLayer.push(arguments); };
+
+    if (analyticsLoaded) {
+      window.gtag('consent', 'update', {
+        analytics_storage: 'granted',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied'
+      });
+      return;
+    }
+
+    window.gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
+    window.gtag('consent', 'update', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
+    window.gtag('js', new Date());
+    window.gtag('config', GA_MEASUREMENT_ID, {
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false
+    });
+
+    if (!IS_LOCAL_ANALYTICS_TEST) {
+      const script = document.createElement('script');
+      script.id = 'ga4-script';
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_MEASUREMENT_ID)}`;
+      document.head.appendChild(script);
+    }
+    analyticsLoaded = true;
+  }
+
+  function deleteAnalyticsCookies() {
+    const cookieNames = document.cookie
+      .split(';')
+      .map(cookie => cookie.split('=')[0].trim())
+      .filter(name => name === '_ga' || name.startsWith('_ga_') || name === '_gid' || name === '_gat');
+    const domains = ['', location.hostname, `.${location.hostname}`];
+
+    cookieNames.forEach(name => {
+      domains.forEach(domain => {
+        const domainPart = domain ? `; domain=${domain}` : '';
+        document.cookie = `${name}=; Max-Age=0; path=/${domainPart}; SameSite=Lax`;
+      });
+    });
+  }
+
+  function disableAnalytics() {
+    window[`ga-disable-${GA_MEASUREMENT_ID}`] = true;
+    if (window.gtag) {
+      window.gtag('consent', 'update', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied'
+      });
+    }
+    deleteAnalyticsCookies();
+  }
+
+  function applyConsent(analyticsAllowed) {
+    storeConsent(analyticsAllowed);
+    document.getElementById('consent-banner').hidden = true;
+    document.getElementById('consent-settings').hidden = true;
+
+    if (analyticsAllowed) {
+      loadAnalytics();
+      trackDonateSectionIfVisible();
+    } else {
+      disableAnalytics();
+    }
+  }
+
+  function acceptAnalyticsConsent() {
+    applyConsent(true);
+  }
+
+  function rejectAllConsent() {
+    document.getElementById('analytics-consent-toggle').checked = false;
+    applyConsent(false);
+  }
+
+  function openConsentSettings() {
+    const banner = document.getElementById('consent-banner');
+    settingsOpenedFromBanner = !banner.hidden;
+    document.getElementById('analytics-consent-toggle').checked = hasAnalyticsConsent();
+    banner.hidden = true;
+    document.getElementById('consent-settings').hidden = false;
+  }
+
+  function closeConsentSettings() {
+    document.getElementById('consent-settings').hidden = true;
+    if (settingsOpenedFromBanner || !consentState) {
+      document.getElementById('consent-banner').hidden = false;
+    }
+  }
+
+  function saveConsentSettings() {
+    applyConsent(document.getElementById('analytics-consent-toggle').checked);
+  }
+
+  function trackAnalyticsEvent(eventName, parameters = {}) {
+    if (!hasAnalyticsConsent()) return false;
+    loadAnalytics();
+    window.gtag('event', eventName, parameters);
+    if (IS_LOCAL_ANALYTICS_TEST) {
+      const root = document.documentElement;
+      root.dataset.analyticsEventCount = String(Number(root.dataset.analyticsEventCount || 0) + 1);
+      root.dataset.lastAnalyticsEvent = eventName;
+    }
+    return true;
+  }
+
+  function trackDonateSectionIfVisible() {
+    if (donateSectionTracked) return;
+    const donateSection = document.getElementById('donate');
+    const rect = donateSection.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.8 && rect.bottom > 0) {
+      donateSectionTracked = trackAnalyticsEvent('view_donate_section');
+    }
+  }
+
+  const donateObserver = new IntersectionObserver(entries => {
+    if (entries.some(entry => entry.isIntersecting && entry.intersectionRatio >= 0.35)) {
+      trackDonateSectionIfVisible();
+      if (donateSectionTracked) donateObserver.disconnect();
+    }
+  }, { threshold: [0.35] });
+  donateObserver.observe(document.getElementById('donate'));
+
+  if (hasAnalyticsConsent()) {
+    loadAnalytics();
+  } else {
+    disableAnalytics();
+    if (!consentState) {
+      document.getElementById('consent-banner').hidden = false;
+    }
   }
 </script>
 </body>

@@ -16,6 +16,13 @@ A static site with a single honest message: help one person take the first step 
 - Hosted on **Cloudflare Pages**, auto-deploys on every push to `main`
 - `www` → apex redirect via `_redirects`
 
+## Privacy and analytics
+
+- Google Analytics 4 is blocked until a visitor explicitly allows analytics.
+- The consent choice can be changed at any time from **Cookie settings** in the footer.
+- Marketing tracking is not used; Google Ads and Google Signals are not connected.
+- Custom events measure only anonymous site interactions (contribution-section views, payment-method selections, and shares). They do not report payment details or completed contributions.
+
 ## Pages
 
 - `index.html` — the main page (the story + contribution methods)
