@@ -8,7 +8,7 @@ The first milestone is simple: one million people giving $1 each. That is the fi
 
 ## What it is
 
-A static site with a single honest message: help one person take the first step toward an impossible dream by giving $1. The first milestone is $1 million; the long-term dream is $1 billion. Voluntary personal contributions are accepted via PayPal, Revolut, crypto, and bank transfer (IBAN).
+A static site with a single honest message: help one person take the first step toward an impossible dream by giving $1. The first milestone is $1 million; the long-term dream is $1 billion. Voluntary personal contributions are accepted via PayPal, Revolut, and bank transfer (IBAN). Crypto contributions are temporarily disabled while wallet access and networks are verified.
 
 ## Stack
 
@@ -20,6 +20,7 @@ A static site with a single honest message: help one person take the first step 
 
 - `index.html` — the main page (the story + contribution methods)
 - `wall-of-dreamers.html` — a wall where supporters leave their name and dream
+- `CRYPTO_WALLETS.md` — the disabled crypto-address register and safe re-enable checklist
 
 ---
 
