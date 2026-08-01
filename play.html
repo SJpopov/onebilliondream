@@ -56,19 +56,19 @@ canvas{border:1px solid rgba(201,168,76,0.2);border-radius:2px;image-rendering:p
   </div>
   <canvas id="canvas" tabindex="0"></canvas>
   <div id="controls">
-    <button class="ctrl-btn" id="undo-btn" onclick="undoMove()">↩ Undo<span id="undo-count">1</span></button>
-    <button class="ctrl-btn" onclick="restartLevel()">↺ Restart</button>
-    <button class="ctrl-btn" onclick="skipLevel()">Skip →</button>
+    <button class="ctrl-btn" id="undo-btn">↩ Undo<span id="undo-count">1</span></button>
+    <button class="ctrl-btn" id="restart-btn">↺ Restart</button>
+    <button class="ctrl-btn" id="skip-btn">Skip →</button>
   </div>
   <div id="dpad">
     <div class="dpad-empty"></div>
-    <button class="dpad-btn" onpointerdown="move(0,-1)">▲</button>
+    <button class="dpad-btn" data-move-x="0" data-move-y="-1">▲</button>
     <div class="dpad-empty"></div>
-    <button class="dpad-btn" onpointerdown="move(-1,0)">◀</button>
+    <button class="dpad-btn" data-move-x="-1" data-move-y="0">◀</button>
     <div class="dpad-empty"></div>
-    <button class="dpad-btn" onpointerdown="move(1,0)">▶</button>
+    <button class="dpad-btn" data-move-x="1" data-move-y="0">▶</button>
     <div class="dpad-empty"></div>
-    <button class="dpad-btn" onpointerdown="move(0,1)">▼</button>
+    <button class="dpad-btn" data-move-x="0" data-move-y="1">▼</button>
     <div class="dpad-empty"></div>
   </div>
   <p id="hint">arrow keys · push boxes onto targets · click canvas first</p>
@@ -77,7 +77,7 @@ canvas{border:1px solid rgba(201,168,76,0.2);border-radius:2px;image-rendering:p
   <h2>Level Complete</h2>
   <p>Solved in <span id="win-move-count"></span> moves</p>
   <p id="win-bonus" style="color:var(--gold);display:none">+1 undo earned!</p>
-  <button class="win-btn" onclick="nextLevel()">Next Level →</button>
+  <button class="win-btn" id="next-level-btn">Next Level →</button>
 </div>
 
 <script>
@@ -473,6 +473,14 @@ canvas.addEventListener('touchend',e=>{
 
 const starsEl=document.getElementById('stars');
 for(let i=0;i<120;i++){const s=document.createElement('div');s.className='star';const sz=Math.random()<.8?1:2;s.style.cssText=`width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${2+Math.random()*4}s;--delay:${Math.random()*6}s;--peak:${0.3+Math.random()*.7};`;starsEl.appendChild(s);}
+
+document.getElementById('undo-btn').addEventListener('click',undoMove);
+document.getElementById('restart-btn').addEventListener('click',restartLevel);
+document.getElementById('skip-btn').addEventListener('click',skipLevel);
+document.getElementById('next-level-btn').addEventListener('click',nextLevel);
+document.querySelectorAll('[data-move-x]').forEach(button=>{
+  button.addEventListener('pointerdown',()=>move(Number(button.dataset.moveX),Number(button.dataset.moveY)));
+});
 
 loadLevel(0);
 window.addEventListener('resize',()=>{const p=parseLevel(LEVELS[currentLevel]);resizeCanvas(p.w,p.h);draw();});

@@ -1,6 +1,6 @@
 /*
   Strict-Transport-Security: max-age=31536000
-  Content-Security-Policy: frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-Jon8H869ho27UV2ZTaU3ELVv3WJugdelDeW261GKKC4=' 'sha256-3hRGc1o0xDObBz0t5aHJtMFcax0orU9dvFPpap5XL10=' 'sha256-hZ9wXvB917EhPA5VVeqonRwDPyx9Yakw+OHCfjTQJnQ=' 'sha256-rpRBkzSpZWCKhPCjdDZ80eOOekE/aw5pHEAz/+bZwck=' 'sha256-9dROWGd27LtIrZMDAmO24N+ddQh+F+isV9USkeA5jRE=' 'sha256-663UH5Z1u7RMsjHdYDtAk28OhLgkiplE16z6gkXXd2k=' https://www.googletagmanager.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://*.google-analytics.com; media-src 'self'; connect-src 'self' https://*.google-analytics.com; frame-src 'none'; worker-src 'none'; manifest-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin

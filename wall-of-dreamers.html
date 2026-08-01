@@ -270,7 +270,7 @@
   <label class="form-label">Your dream (optional)</label>
   <textarea class="form-textarea" id="input-dream" placeholder="What's your dream? Share it with the world..."></textarea>
 
-  <button class="submit-btn" onclick="submitDream()">Add my name to the wall →</button>
+  <button class="submit-btn" id="submit-dream-btn">Add my name to the wall →</button>
   <p class="form-note" id="form-note">Your message is sent to us by email and appears on the wall after review.</p>
 </section>
 
@@ -318,6 +318,7 @@
     document.getElementById('form-note').textContent =
       'Your email app just opened — press send, and after review your dream joins the wall. ✨';
   }
+  document.getElementById('submit-dream-btn').addEventListener('click', submitDream);
 </script>
 
 <style>

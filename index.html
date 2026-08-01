@@ -273,6 +273,13 @@
   }
 
   #story h2 em { font-style: italic; color: var(--gold); }
+  .story-link {
+    color: var(--blue);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(74,158,218,0.3);
+    transition: border-color 0.2s;
+  }
+  .story-link:hover { border-color: rgba(74,158,218,0.8); }
 
   #story p {
     color: rgba(245,240,232,0.75);
@@ -450,6 +457,7 @@
     border: 1px solid rgba(201,168,76,0.25);
   }
   .btn-bank:hover { background: rgba(201,168,76,0.08); }
+  .play-link:hover { opacity: 1 !important; }
 
   .donate-fine {
     font-size: 0.85rem;
@@ -891,8 +899,8 @@
   <p class="hero-eyebrow">A completely honest request</p>
   <h1>One Billion <em>Dream</em></h1>
   <p class="hero-sub">I have an impossible dream: a life of freedom, exploration and discovery. I'm starting with one simple goal — one million people, one dollar each.</p>
-  <a href="#donate" class="hero-cta" onclick="event.preventDefault();document.getElementById('donate').scrollIntoView({behavior:'smooth',block:'start'})">Donate →</a>
-  <a href="#counter-section" class="scroll-hint" onclick="event.preventDefault();document.getElementById('counter-section').scrollIntoView({behavior:'smooth',block:'start'})">↓ &nbsp; scroll &nbsp; ↓</a>
+  <a href="#donate" class="hero-cta">Donate →</a>
+  <a href="#counter-section" class="scroll-hint">↓ &nbsp; scroll &nbsp; ↓</a>
 </section>
 
 <!-- COUNTER -->
@@ -915,7 +923,7 @@
 <section id="story">
   <p class="section-tag">The story</p>
   <div class="divider"></div>
-  <h2>When I was a child,<br>I had <a href="/wall-of-dreamers" style="color:#4a9eda;text-decoration:none;border-bottom:1px solid rgba(74,158,218,0.3);transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(74,158,218,0.8)'" onmouseout="this.style.borderColor='rgba(74,158,218,0.3)'">big dreams.</a></h2>
+  <h2>When I was a child,<br>I had <a href="/wall-of-dreamers" class="story-link">big dreams.</a></h2>
 
   <p>I wanted to be an explorer — to do things no one had done before. I wanted to travel to space. I wanted to make discoveries that would matter. I wanted to live a life that felt genuinely extraordinary.</p>
 
@@ -990,7 +998,7 @@
     <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.75rem;">
       <div style="display:flex;align-items:baseline;gap:5px;">
         <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.15em;color:var(--gold-dim);text-transform:uppercase;white-space:nowrap;">Raised so far —</span>
-        <a href="/play" title="" style="display:inline-flex;align-items:baseline;text-decoration:none;cursor:pointer;opacity:0.8;transition:opacity 0.2s;flex-shrink:0;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'"><svg width="14" height="22" viewBox="0 0 22 34" style="margin-bottom:-4px;" xmlns="http://www.w3.org/2000/svg">
+        <a href="/play" class="play-link" title="" style="display:inline-flex;align-items:baseline;text-decoration:none;cursor:pointer;opacity:0.8;transition:opacity 0.2s;flex-shrink:0;"><svg width="14" height="22" viewBox="0 0 22 34" style="margin-bottom:-4px;" xmlns="http://www.w3.org/2000/svg">
           <circle cx="11" cy="5" r="5" fill="#f5f0e8" opacity="0.8"/>
           <line x1="11" y1="10" x2="11" y2="22" stroke="#f5f0e8" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
           <line x1="11" y1="15" x2="2" y2="9" stroke="#f5f0e8" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
@@ -1016,7 +1024,7 @@
       <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.59 3.025-2.566 4.643-5.813 4.643H12.55c-.524 0-.968.382-1.05.9L10.317 18.5l-.314 1.988a.407.407 0 0 0 .403.469h3.096c.452 0 .836-.33.906-.777l.037-.193.72-4.568.046-.252a.915.915 0 0 1 .905-.777h.57c3.694 0 6.586-1.5 7.43-5.84.352-1.808.17-3.317-.894-4.381z"/></svg>
       PayPal
     </a>
-    <button id="card-btn" class="donate-btn btn-card" onclick="openCardModal()">
+    <button id="card-btn" class="donate-btn btn-card" data-open-modal="card-modal">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
       Credit / Debit Card
     </button>
@@ -1025,11 +1033,11 @@
       Revolut
     </a>
     <!-- Temporarily disabled: remove only the `hidden` attribute after wallet access and networks are verified. -->
-    <button id="crypto-btn" class="donate-btn btn-crypto" onclick="openCryptoModal()" hidden>
+    <button id="crypto-btn" class="donate-btn btn-crypto" data-open-modal="crypto-modal" hidden>
       <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M23.638 14.904c-1.602 6.43-8.113 10.34-14.542 8.736C2.67 22.05-1.244 15.525.362 9.105 1.962 2.67 8.475-1.243 14.9.358c6.43 1.605 10.342 8.115 8.738 14.548v-.002zm-6.35-4.613c.24-1.59-.974-2.45-2.64-3.03l.54-2.153-1.315-.33-.525 2.107c-.345-.087-.705-.167-1.064-.25l.526-2.127-1.32-.33-.54 2.165c-.285-.067-.565-.132-.84-.2l-1.815-.45-.35 1.407s.974.225.955.236c.535.136.63.486.615.766l-1.477 5.92c-.075.166-.24.406-.614.314.015.02-.96-.24-.96-.24l-.66 1.51 1.71.426.93.242-.54 2.19 1.32.327.54-2.17c.36.1.705.19 1.05.273l-.51 2.154 1.32.33.545-2.19c2.24.427 3.93.257 4.64-1.774.57-1.637-.03-2.58-1.217-3.196.854-.193 1.5-.76 1.68-1.93h.01zm-3.01 4.22c-.404 1.64-3.157.75-4.05.53l.72-2.9c.896.23 3.757.67 3.33 2.37zm.41-4.24c-.37 1.49-2.662.735-3.405.55l.654-2.64c.744.18 3.137.524 2.75 2.084v.006z"/></svg>
       Crypto (BTC / ETH / USDT)
     </button>
-    <button class="donate-btn btn-bank" onclick="openBankModal()">
+    <button class="donate-btn btn-bank" data-open-modal="bank-modal">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg>
       Bank Transfer (IBAN)
     </button>
@@ -1055,53 +1063,53 @@
     <a class="share-btn" id="wa-share" href="#" target="_blank" rel="noopener noreferrer" data-share-method="whatsapp">WhatsApp</a>
     <a class="share-btn" id="tg-share" href="#" target="_blank" rel="noopener noreferrer" data-share-method="telegram">Telegram</a>
     <a class="share-btn" id="rd-share" href="#" target="_blank" rel="noopener noreferrer" data-share-method="reddit">Reddit</a>
-    <button class="share-btn" onclick="copyLink(this)">Copy Link</button>
+    <button id="copy-link-btn" class="share-btn">Copy Link</button>
   </div>
 </section>
 
 <footer>
   © 2026 One Billion Dream &nbsp;·&nbsp; No promises were harmed in the making of this site.
-  &nbsp;·&nbsp; <button class="cookie-settings-link" type="button" onclick="openConsentSettings()">Cookie settings</button>
+  &nbsp;·&nbsp; <button id="cookie-settings-btn" class="cookie-settings-link" type="button">Cookie settings</button>
 </footer>
 
 <!-- BANK MODAL -->
-<div class="modal-overlay" id="bank-modal" onclick="closeModal('bank-modal')">
-  <div class="modal" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closeModal('bank-modal')">×</button>
+<div class="modal-overlay" id="bank-modal">
+  <div class="modal">
+    <button class="modal-close" data-close-modal="bank-modal">×</button>
     <h3>Bank Transfer</h3>
     <div class="modal-row">
       <span>Account Name</span>
       <span style="display:flex;align-items:center;gap:0.5rem;">
         Stefan Popov
-        <button onclick="copyAddr(this,'Stefan Popov')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+        <button data-copy-value="Stefan Popov" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
       </span>
     </div>
     <div class="modal-row">
       <span>IBAN</span>
       <span style="display:flex;align-items:center;gap:0.5rem;">
         LT87 3250 0447 2971 3748
-        <button onclick="copyAddr(this,'LT873250044729713748')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+        <button data-copy-value="LT873250044729713748" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
       </span>
     </div>
     <div class="modal-row">
       <span>BIC / SWIFT</span>
       <span style="display:flex;align-items:center;gap:0.5rem;">
         REVOLT21
-        <button onclick="copyAddr(this,'REVOLT21')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+        <button data-copy-value="REVOLT21" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
       </span>
     </div>
     <div class="modal-row">
       <span>Bank</span>
       <span style="display:flex;align-items:center;gap:0.5rem;">
         Revolut Bank UAB, Vilnius
-        <button onclick="copyAddr(this,'Revolut Bank UAB, Konstitucijos ave. 21B, 08130, Vilnius, Lithuania')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+        <button data-copy-value="Revolut Bank UAB, Konstitucijos ave. 21B, 08130, Vilnius, Lithuania" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
       </span>
     </div>
     <div class="modal-row">
       <span>Reference</span>
       <span style="display:flex;align-items:center;gap:0.5rem;">
         DREAM
-        <button onclick="copyAddr(this,'DREAM')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+        <button data-copy-value="DREAM" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
       </span>
     </div>
     <p style="margin-top:1.5rem;font-size:0.85rem;color:var(--muted);font-style:italic;">Any amount is welcome. Even $1.</p>
@@ -1109,16 +1117,16 @@
 </div>
 
 <!-- CRYPTO MODAL -->
-<div class="modal-overlay" id="crypto-modal" onclick="closeModal('crypto-modal')">
-  <div class="modal" onclick="event.stopPropagation()" style="max-width:560px;max-height:85vh;overflow-y:auto;">
-    <button class="modal-close" onclick="closeModal('crypto-modal')">×</button>
+<div class="modal-overlay" id="crypto-modal">
+  <div class="modal" style="max-width:560px;max-height:85vh;overflow-y:auto;">
+    <button class="modal-close" data-close-modal="crypto-modal">×</button>
     <h3>Crypto Addresses</h3>
     <div style="display:flex;flex-direction:column;gap:0.75rem;margin-top:0.5rem;">
 
       <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
           <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">BTC</span>
-          <button onclick="copyAddr(this,'bc1q9zsep5cspgu3zeyh5hlg5tyvra59duj2wq27km')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+          <button data-copy-value="bc1q9zsep5cspgu3zeyh5hlg5tyvra59duj2wq27km" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
         </div>
         <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">bc1q9zsep5cspgu3zeyh5hlg5tyvra59duj2wq27km</div>
       </div>
@@ -1126,7 +1134,7 @@
       <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
           <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">ETH / USDT / USDC / BNB</span>
-          <button onclick="copyAddr(this,'0x48bbe31fa584b52b4fce3e7cae48cadfbf50a9b2')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+          <button data-copy-value="0x48bbe31fa584b52b4fce3e7cae48cadfbf50a9b2" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
         </div>
         <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">0x48bbe31fa584b52b4fce3e7cae48cadfbf50a9b2</div>
       </div>
@@ -1134,7 +1142,7 @@
       <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
           <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">SOL</span>
-          <button onclick="copyAddr(this,'62s6iRJpHbYENpj96Nm6fncqBTygTHrSjEvUVWANcKfV')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+          <button data-copy-value="62s6iRJpHbYENpj96Nm6fncqBTygTHrSjEvUVWANcKfV" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
         </div>
         <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">62s6iRJpHbYENpj96Nm6fncqBTygTHrSjEvUVWANcKfV</div>
       </div>
@@ -1142,7 +1150,7 @@
       <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
           <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">DOGE</span>
-          <button onclick="copyAddr(this,'D9G7cNbGhWxocSimXNMiRCZpCeS4C5aV6p')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+          <button data-copy-value="D9G7cNbGhWxocSimXNMiRCZpCeS4C5aV6p" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
         </div>
         <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">D9G7cNbGhWxocSimXNMiRCZpCeS4C5aV6p</div>
       </div>
@@ -1150,7 +1158,7 @@
       <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
           <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">ADA</span>
-          <button onclick="copyAddr(this,'addr1q903k5pwzhf46fjjh7dp7047t9ard89hulmpdj3jr4mj8spp7xaqmgslpxklpwjqck3rluqzrvuw59dsvcwe5rhs8dxsyhkl66')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+          <button data-copy-value="addr1q903k5pwzhf46fjjh7dp7047t9ard89hulmpdj3jr4mj8spp7xaqmgslpxklpwjqck3rluqzrvuw59dsvcwe5rhs8dxsyhkl66" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
         </div>
         <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">addr1q903k5pwzhf46fjjh7dp7047t9ard89hulmpdj3jr4mj8spp7xaqmgslpxklpwjqck3rluqzrvuw59dsvcwe5rhs8dxsyhkl66</div>
       </div>
@@ -1158,7 +1166,7 @@
       <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
           <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">TRX / USDT TRC20</span>
-          <button onclick="copyAddr(this,'TKfTomhzn5n67euckht3Dz34YTrQJN2m1s')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+          <button data-copy-value="TKfTomhzn5n67euckht3Dz34YTrQJN2m1s" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
         </div>
         <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">TKfTomhzn5n67euckht3Dz34YTrQJN2m1s</div>
       </div>
@@ -1166,7 +1174,7 @@
       <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
           <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">XLM</span>
-          <button onclick="copyAddr(this,'GCW3WED6SDHAWABJNMODJN3MU5WO7XE2Q7S23VMCWZWXL7NAB23DSF3D')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+          <button data-copy-value="GCW3WED6SDHAWABJNMODJN3MU5WO7XE2Q7S23VMCWZWXL7NAB23DSF3D" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
         </div>
         <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">GCW3WED6SDHAWABJNMODJN3MU5WO7XE2Q7S23VMCWZWXL7NAB23DSF3D</div>
       </div>
@@ -1174,7 +1182,7 @@
       <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
           <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">TON</span>
-          <button onclick="copyAddr(this,'UQDgV0oRmvWrwA2yarptc70V15C6E_83tkxtcJSkzZmXbi2T')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+          <button data-copy-value="UQDgV0oRmvWrwA2yarptc70V15C6E_83tkxtcJSkzZmXbi2T" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
         </div>
         <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">UQDgV0oRmvWrwA2yarptc70V15C6E_83tkxtcJSkzZmXbi2T</div>
       </div>
@@ -1182,7 +1190,7 @@
       <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
           <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">LTC</span>
-          <button onclick="copyAddr(this,'ltc1q8fu9euv8zelfuln5vc776tn7z8qwtj6sr7755w')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+          <button data-copy-value="ltc1q8fu9euv8zelfuln5vc776tn7z8qwtj6sr7755w" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
         </div>
         <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">ltc1q8fu9euv8zelfuln5vc776tn7z8qwtj6sr7755w</div>
       </div>
@@ -1190,7 +1198,7 @@
       <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
           <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold);">ZEC</span>
-          <button onclick="copyAddr(this,'t1Nd9AoiQKhkBC2Boj2KQ26ChgMLidyAxgM')" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
+          <button data-copy-value="t1Nd9AoiQKhkBC2Boj2KQ26ChgMLidyAxgM" style="background:transparent;border:1px solid rgba(201,168,76,0.3);color:var(--gold-dim);font-family:'Space Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;cursor:pointer;">COPY</button>
         </div>
         <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--cream);word-break:break-all;">t1Nd9AoiQKhkBC2Boj2KQ26ChgMLidyAxgM</div>
       </div>
@@ -1201,9 +1209,9 @@
 </div>
 
 <!-- CARD MODAL -->
-<div class="modal-overlay" id="card-modal" onclick="closeModal('card-modal')">
-  <div class="modal" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closeModal('card-modal')">×</button>
+<div class="modal-overlay" id="card-modal">
+  <div class="modal">
+    <button class="modal-close" data-close-modal="card-modal">×</button>
     <h3>Pay by Card</h3>
     <p style="color:var(--muted);font-size:1rem;margin-bottom:1.5rem;">Card payments are processed via PayPal — no account needed.</p>
     <a id="card-paypal-link" href="https://www.paypal.com/donate?hosted_button_id=8S8HPJ6H47EYA&locale.x=en_US" target="_blank" rel="noopener noreferrer" class="donate-btn btn-paypal" style="text-decoration:none;display:flex;">
@@ -1395,15 +1403,15 @@
     <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google privacy information</a>
   </p>
   <div class="consent-actions">
-    <button class="consent-btn consent-btn-secondary" type="button" onclick="rejectAllConsent()">Reject</button>
-    <button class="consent-btn consent-btn-secondary" type="button" onclick="openConsentSettings()">Settings</button>
-    <button class="consent-btn consent-btn-primary" type="button" onclick="acceptAnalyticsConsent()">Accept analytics</button>
+    <button id="consent-reject-btn" class="consent-btn consent-btn-secondary" type="button">Reject</button>
+    <button id="consent-settings-btn" class="consent-btn consent-btn-secondary" type="button">Settings</button>
+    <button id="consent-accept-btn" class="consent-btn consent-btn-primary" type="button">Accept analytics</button>
   </div>
 </section>
 
-<div id="consent-settings" class="consent-overlay" role="dialog" aria-modal="true" aria-labelledby="consent-settings-title" onclick="if(event.target===this) closeConsentSettings()" hidden>
+<div id="consent-settings" class="consent-overlay" role="dialog" aria-modal="true" aria-labelledby="consent-settings-title" hidden>
   <div class="consent-panel">
-    <button class="modal-close" type="button" aria-label="Close cookie settings" onclick="closeConsentSettings()">×</button>
+    <button id="consent-close-btn" class="modal-close" type="button" aria-label="Close cookie settings">×</button>
     <h2 id="consent-settings-title">Privacy settings</h2>
     <p class="consent-panel-intro">Choose what this site may use. You can change your decision at any time from the footer.</p>
 
@@ -1432,8 +1440,8 @@
     </div>
 
     <div class="consent-panel-actions">
-      <button class="consent-btn consent-btn-secondary" type="button" onclick="rejectAllConsent()">Reject all</button>
-      <button class="consent-btn consent-btn-primary" type="button" onclick="saveConsentSettings()">Save choices</button>
+      <button id="consent-reject-all-btn" class="consent-btn consent-btn-secondary" type="button">Reject all</button>
+      <button id="consent-save-btn" class="consent-btn consent-btn-primary" type="button">Save choices</button>
     </div>
   </div>
 </div>
@@ -1626,6 +1634,45 @@
     }
   }, { threshold: [0.35] });
   donateObserver.observe(document.getElementById('donate'));
+
+  document.addEventListener('click', event => {
+    const openButton = event.target.closest('[data-open-modal]');
+    if (openButton) {
+      const modalId = openButton.dataset.openModal;
+      if (modalId === 'bank-modal') openBankModal();
+      if (modalId === 'card-modal') openCardModal();
+      if (modalId === 'crypto-modal') openCryptoModal();
+      return;
+    }
+
+    const closeButton = event.target.closest('[data-close-modal]');
+    if (closeButton) {
+      closeModal(closeButton.dataset.closeModal);
+      return;
+    }
+
+    const copyButton = event.target.closest('[data-copy-value]');
+    if (copyButton) {
+      copyAddr(copyButton, copyButton.dataset.copyValue);
+      return;
+    }
+
+    if (event.target.classList.contains('modal-overlay')) {
+      closeModal(event.target.id);
+    }
+  });
+
+  document.getElementById('copy-link-btn').addEventListener('click', event => copyLink(event.currentTarget));
+  document.getElementById('cookie-settings-btn').addEventListener('click', openConsentSettings);
+  document.getElementById('consent-settings-btn').addEventListener('click', openConsentSettings);
+  document.getElementById('consent-close-btn').addEventListener('click', closeConsentSettings);
+  document.getElementById('consent-reject-btn').addEventListener('click', rejectAllConsent);
+  document.getElementById('consent-reject-all-btn').addEventListener('click', rejectAllConsent);
+  document.getElementById('consent-accept-btn').addEventListener('click', acceptAnalyticsConsent);
+  document.getElementById('consent-save-btn').addEventListener('click', saveConsentSettings);
+  document.getElementById('consent-settings').addEventListener('click', event => {
+    if (event.target === event.currentTarget) closeConsentSettings();
+  });
 
   if (hasAnalyticsConsent()) {
     loadAnalytics();
