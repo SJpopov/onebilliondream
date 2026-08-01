@@ -54,7 +54,7 @@ canvas{border:1px solid rgba(201,168,76,0.2);border-radius:2px;image-rendering:p
     <div id="level-info">Level <span id="lvl-num">1</span> / <span id="lvl-total">155</span></div>
     <div id="move-info">Moves: <span id="moves">0</span></div>
   </div>
-  <canvas id="canvas" tabindex="0"></canvas>
+  <canvas id="canvas" tabindex="0" role="img" aria-label="Sokoban puzzle board. Use the arrow keys or direction buttons to move boxes onto targets."></canvas>
   <div id="controls">
     <button class="ctrl-btn" id="undo-btn">↩ Undo<span id="undo-count">1</span></button>
     <button class="ctrl-btn" id="restart-btn">↺ Restart</button>
@@ -62,13 +62,13 @@ canvas{border:1px solid rgba(201,168,76,0.2);border-radius:2px;image-rendering:p
   </div>
   <div id="dpad">
     <div class="dpad-empty"></div>
-    <button class="dpad-btn" data-move-x="0" data-move-y="-1">▲</button>
+    <button class="dpad-btn" data-move-x="0" data-move-y="-1" aria-label="Move up">▲</button>
     <div class="dpad-empty"></div>
-    <button class="dpad-btn" data-move-x="-1" data-move-y="0">◀</button>
+    <button class="dpad-btn" data-move-x="-1" data-move-y="0" aria-label="Move left">◀</button>
     <div class="dpad-empty"></div>
-    <button class="dpad-btn" data-move-x="1" data-move-y="0">▶</button>
+    <button class="dpad-btn" data-move-x="1" data-move-y="0" aria-label="Move right">▶</button>
     <div class="dpad-empty"></div>
-    <button class="dpad-btn" data-move-x="0" data-move-y="1">▼</button>
+    <button class="dpad-btn" data-move-x="0" data-move-y="1" aria-label="Move down">▼</button>
     <div class="dpad-empty"></div>
   </div>
   <p id="hint">arrow keys · push boxes onto targets · click canvas first</p>

@@ -887,10 +887,10 @@
 <div id="stars"></div>
 
 <!-- VIDEO BACKGROUND (B copy fades in near the end of A to hide the loop seam) -->
-<video id="hero-video" class="bg-video" autoplay muted playsinline>
+<video id="hero-video" class="bg-video" autoplay muted playsinline aria-hidden="true" tabindex="-1">
   <source src="857251-hd_1620_1080_25fps.mp4#t=0.001" type="video/mp4">
 </video>
-<video id="hero-video-b" class="bg-video" muted playsinline preload="auto" style="opacity:0;">
+<video id="hero-video-b" class="bg-video" muted playsinline preload="auto" aria-hidden="true" tabindex="-1" style="opacity:0;">
   <source src="857251-hd_1620_1080_25fps.mp4#t=0.001" type="video/mp4">
 </video>
 
@@ -1073,10 +1073,10 @@
 </footer>
 
 <!-- BANK MODAL -->
-<div class="modal-overlay" id="bank-modal">
+<div class="modal-overlay" id="bank-modal" role="dialog" aria-modal="true" aria-labelledby="bank-modal-title">
   <div class="modal">
-    <button class="modal-close" data-close-modal="bank-modal">×</button>
-    <h3>Bank Transfer</h3>
+    <button class="modal-close" data-close-modal="bank-modal" type="button" aria-label="Close bank transfer details">×</button>
+    <h3 id="bank-modal-title">Bank Transfer</h3>
     <div class="modal-row">
       <span>Account Name</span>
       <span style="display:flex;align-items:center;gap:0.5rem;">
@@ -1117,10 +1117,10 @@
 </div>
 
 <!-- CRYPTO MODAL -->
-<div class="modal-overlay" id="crypto-modal">
+<div class="modal-overlay" id="crypto-modal" role="dialog" aria-modal="true" aria-labelledby="crypto-modal-title">
   <div class="modal" style="max-width:560px;max-height:85vh;overflow-y:auto;">
-    <button class="modal-close" data-close-modal="crypto-modal">×</button>
-    <h3>Crypto Addresses</h3>
+    <button class="modal-close" data-close-modal="crypto-modal" type="button" aria-label="Close crypto address details">×</button>
+    <h3 id="crypto-modal-title">Crypto Addresses</h3>
     <div style="display:flex;flex-direction:column;gap:0.75rem;margin-top:0.5rem;">
 
       <div style="background:rgba(245,240,232,0.04);border:1px solid rgba(201,168,76,0.12);border-radius:2px;padding:0.75rem 1rem;">
@@ -1209,10 +1209,10 @@
 </div>
 
 <!-- CARD MODAL -->
-<div class="modal-overlay" id="card-modal">
+<div class="modal-overlay" id="card-modal" role="dialog" aria-modal="true" aria-labelledby="card-modal-title">
   <div class="modal">
-    <button class="modal-close" data-close-modal="card-modal">×</button>
-    <h3>Pay by Card</h3>
+    <button class="modal-close" data-close-modal="card-modal" type="button" aria-label="Close card payment details">×</button>
+    <h3 id="card-modal-title">Pay by Card</h3>
     <p style="color:var(--muted);font-size:1rem;margin-bottom:1.5rem;">Card payments are processed via PayPal — no account needed.</p>
     <a id="card-paypal-link" href="https://www.paypal.com/donate?hosted_button_id=8S8HPJ6H47EYA&locale.x=en_US" target="_blank" rel="noopener noreferrer" class="donate-btn btn-paypal" style="text-decoration:none;display:flex;">
       Continue with Card via PayPal

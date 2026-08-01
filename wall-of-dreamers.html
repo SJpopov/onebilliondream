@@ -4,7 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wall of Dreamers — One Billion Dream</title>
+<meta name="description" content="Meet the people who believed in One Billion Dream and share the dream you want to make real.">
+<meta name="robots" content="index, follow">
 <link rel="canonical" href="https://onebilliondream.com/wall-of-dreamers">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://onebilliondream.com/wall-of-dreamers">
+<meta property="og:title" content="Wall of Dreamers — One Billion Dream">
+<meta property="og:description" content="Meet the people who believed and share the dream you want to make real.">
+<meta property="og:image" content="https://onebilliondream.com/og-image.png">
+<meta property="og:site_name" content="One Billion Dream">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Wall of Dreamers — One Billion Dream">
+<meta name="twitter:description" content="Meet the people who believed and share the dream you want to make real.">
+<meta name="twitter:image" content="https://onebilliondream.com/og-image.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
@@ -264,14 +276,14 @@
   <p class="section-tag" style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.25em;color:var(--gold-dim);text-transform:uppercase;margin-bottom:1rem;">Leave your mark</p>
   <div class="divider"></div>
 
-  <label class="form-label">Your name (or stay anonymous)</label>
-  <input type="text" class="form-input" id="input-name" placeholder="e.g. Alex from Berlin, or Anonymous">
+  <label class="form-label" for="input-name">Your name (or stay anonymous)</label>
+  <input type="text" class="form-input" id="input-name" maxlength="100" autocomplete="name" placeholder="e.g. Alex from Berlin, or Anonymous">
 
-  <label class="form-label">Your dream (optional)</label>
-  <textarea class="form-textarea" id="input-dream" placeholder="What's your dream? Share it with the world..."></textarea>
+  <label class="form-label" for="input-dream">Your dream (optional)</label>
+  <textarea class="form-textarea" id="input-dream" maxlength="1000" aria-describedby="form-note" placeholder="What's your dream? Share it with the world..."></textarea>
 
-  <button class="submit-btn" id="submit-dream-btn">Add my name to the wall →</button>
-  <p class="form-note" id="form-note">Your message is sent to us by email and appears on the wall after review.</p>
+  <button class="submit-btn" id="submit-dream-btn" type="button">Add my name to the wall →</button>
+  <p class="form-note" id="form-note" aria-live="polite">Your message is sent to us by email and appears on the wall after review.</p>
 </section>
 
 <section id="wall">
