@@ -25,6 +25,11 @@ A static site with a single honest message: help one person take the first step 
 - Marketing tracking is not used; Google Ads and Google Signals are not connected.
 - Custom events measure only anonymous site interactions (contribution-section views, payment-method selections, and shares). They do not report payment details or completed contributions.
 
+## Operations
+
+- Account-security, recovery and monitoring work is tracked in `SECURITY_MAINTENANCE.md`.
+- Privacy-related maintenance and the future 90-day submission cleanup are tracked in `PRIVACY_MAINTENANCE.md`.
+
 ## Pages
 
 - `index.html` — the main page (the story + contribution methods)
