@@ -31,4 +31,22 @@ The public privacy notice is `privacy.html`. The site is under active developmen
 - Unpublished Wall of Dreamers submissions: target deletion within 90 days.
 - Crypto contributions: temporarily hidden and disabled.
 
+## Pending automation — Wall of Dreamers retention
+
+This is a recorded future task and is **not automated yet**.
+
+Build a safe scheduled cleanup for Wall of Dreamers submission emails so that unpublished submissions older than 90 days are handled automatically.
+
+Required safeguards before enabling it:
+
+1. Create a dedicated Gmail filter and label used only for Wall of Dreamers submissions.
+2. Define a separate label or status for published submissions and messages still under review.
+3. Run the cleanup in report-only mode first and verify every matched message manually.
+4. Exclude published, active, disputed or legally required records.
+5. Move eligible messages to Trash first; do not permanently delete them directly.
+6. Keep a simple dated cleanup report without copying submission contents.
+7. Test recovery from Trash before scheduling the live cleanup.
+
+Until this automation is implemented and verified, review and remove unpublished submissions manually in line with the public 90-day target.
+
 This checklist supports maintenance but is not a substitute for professional legal advice when the project, data use or jurisdictions materially expand.
