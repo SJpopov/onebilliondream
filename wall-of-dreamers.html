@@ -243,6 +243,8 @@
     position: relative;
     z-index: 1;
   }
+  footer a { color: inherit; text-underline-offset: 3px; }
+  footer a:hover { color: var(--gold-dim); }
 
   @media (max-width: 600px) {
     .dreams-grid { grid-template-columns: 1fr; }
@@ -283,7 +285,7 @@
   <textarea class="form-textarea" id="input-dream" maxlength="1000" aria-describedby="form-note" placeholder="What's your dream? Share it with the world..."></textarea>
 
   <button class="submit-btn" id="submit-dream-btn" type="button">Add my name to the wall →</button>
-  <p class="form-note" id="form-note" aria-live="polite">Your message is sent to us by email and appears on the wall after review.</p>
+  <p class="form-note" id="form-note" aria-live="polite">Your message is sent to us by email and appears on the wall after review. See the <a href="/privacy">Privacy policy</a>.</p>
 </section>
 
 <section id="wall">
@@ -299,6 +301,7 @@
 
 <footer>
   © 2026 One Billion Dream &nbsp;·&nbsp; No promises were harmed in the making of this wall.
+  &nbsp;·&nbsp; <a href="/privacy">Privacy</a>
 </footer>
 
 <script>

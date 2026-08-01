@@ -20,6 +20,8 @@ A static site with a single honest message: help one person take the first step 
 
 - Google Analytics 4 is blocked until a visitor explicitly allows analytics.
 - The consent choice can be changed at any time from **Cookie settings** in the footer.
+- The public privacy notice is available at `/privacy`.
+- Review `PRIVACY_MAINTENANCE.md` before every change that affects data, analytics, cookies, forms, contribution methods or providers.
 - Marketing tracking is not used; Google Ads and Google Signals are not connected.
 - Custom events measure only anonymous site interactions (contribution-section views, payment-method selections, and shares). They do not report payment details or completed contributions.
 
