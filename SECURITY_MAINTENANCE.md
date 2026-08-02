@@ -61,13 +61,13 @@ Cloudflare rollback restores service quickly, but it does not change the source 
 - Keep GitHub recovery codes, Cloudflare recovery access and registrar recovery access separate.
 - Perform a controlled rollback drill after this plan is reviewed, then repeat after major hosting changes.
 
-## 3. Monitoring plan — pending implementation
+## 3. Monitoring plan — implemented 2 August 2026
 
 Start with alert-only monitoring. Do **not** enable automatic rollback until false positives and recovery behaviour have been tested.
 
-### Recommended first version
+### Active first version
 
-Create a scheduled GitHub Actions workflow that runs approximately every 15 minutes and after relevant pushes. It should check:
+The GitHub Actions workflow `.github/workflows/production-monitor.yml` runs approximately every 15 minutes, after relevant pushes to `main`, and on manual request. Its checks are implemented in `scripts/check-production.mjs` and cover:
 
 - `https://onebilliondream.com/` returns HTTP 200 and contains the expected site marker.
 - `/privacy`, `/wall-of-dreamers`, `/sitemap.xml` and `/robots.txt` are reachable.
@@ -76,7 +76,9 @@ Create a scheduled GitHub Actions workflow that runs approximately every 15 minu
 - The crypto contribution button remains hidden until deliberately re-enabled.
 - The public privacy page and consent controls still exist.
 
-If a check fails, the workflow should fail with a short diagnostic. GitHub Actions notifications should be configured to email the repository owner for failed workflows. A manual rerun should confirm the failure before recovery action is taken.
+If a check fails, the workflow fails with a short diagnostic. GitHub Actions notifications must remain configured to email the repository owner for failed workflows. A manual rerun should confirm the failure before recovery action is taken.
+
+The workflow has read-only repository permissions, uses no secrets, and never performs an automatic rollback.
 
 ### Optional second signal
 

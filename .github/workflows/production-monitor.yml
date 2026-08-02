@@ -1,0 +1,39 @@
+name: Production monitor
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/production-monitor.yml"
+      - "scripts/check-production.mjs"
+      - "index.html"
+      - "privacy.html"
+      - "wall-of-dreamers.html"
+      - "sitemap.xml"
+      - "robots.txt"
+      - "_headers"
+      - "_redirects"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-monitor
+  cancel-in-progress: false
+
+jobs:
+  check-production:
+    name: Check live site
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out monitoring code
+        uses: actions/checkout@v4
+
+      - name: Check production
+        run: node scripts/check-production.mjs
