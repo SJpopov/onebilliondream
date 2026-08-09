@@ -34,7 +34,7 @@ jobs:
 
     steps:
       - name: Check out monitoring code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Allow production deployment to complete
         if: github.event_name == 'push'
