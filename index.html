@@ -899,10 +899,10 @@
 
 <main class="site-main">
   <section id="hero">
-    <video id="hero-video" class="bg-video" autoplay muted playsinline aria-hidden="true" tabindex="-1">
+    <video id="hero-video" class="bg-video" autoplay muted loop playsinline aria-hidden="true" tabindex="-1">
       <source src="857251-hd_1620_1080_25fps.mp4#t=0.001" type="video/mp4">
     </video>
-    <video id="hero-video-b" class="bg-video" muted playsinline preload="auto" aria-hidden="true" tabindex="-1" style="opacity:0;">
+    <video id="hero-video-b" class="bg-video" muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" style="opacity:0;">
       <source src="857251-hd_1620_1080_25fps.mp4#t=0.001" type="video/mp4">
     </video>
     <div class="hero-content" id="top">
@@ -1339,23 +1339,50 @@
 
   // Seamless video loop: near the end of the active copy, the standby copy
   // starts from 0 and the two cross-fade, hiding the visible restart jump.
+  // Native loop remains enabled as a fallback so the background cannot stop
+  // if a browser throttles or misses a timeupdate event.
   const vidA = document.getElementById('hero-video');
   const vidB = document.getElementById('hero-video-b');
   let activeVid = vidA, standbyVid = vidB;
+  let videoTransitioning = false;
   const FADE = 1.4; // seconds — keep in sync with .bg-video transition
-  setInterval(() => {
-    if (!activeVid.duration || activeVid.paused) return;
-    if (activeVid.duration - activeVid.currentTime <= FADE) {
-      standbyVid.currentTime = 0;
-      standbyVid.play();
-      standbyVid.style.opacity = '1';
-      activeVid.style.opacity = '0';
-      const prev = activeVid;
-      activeVid = standbyVid;
-      standbyVid = prev;
-      setTimeout(() => prev.pause(), FADE * 1000 + 100);
+
+  async function crossfadeHeroVideo() {
+    if (videoTransitioning) return;
+    videoTransitioning = true;
+
+    const outgoingVid = activeVid;
+    const incomingVid = standbyVid;
+    incomingVid.currentTime = 0;
+
+    try {
+      await incomingVid.play();
+    } catch {
+      // Native loop on the active video is the safe fallback.
+      videoTransitioning = false;
+      return;
     }
-  }, 250);
+
+    incomingVid.style.opacity = '1';
+    outgoingVid.style.opacity = '0';
+    activeVid = incomingVid;
+    standbyVid = outgoingVid;
+
+    setTimeout(() => {
+      outgoingVid.pause();
+      outgoingVid.currentTime = 0;
+      videoTransitioning = false;
+    }, FADE * 1000 + 100);
+  }
+
+  function handleHeroVideoProgress(event) {
+    const video = event.currentTarget;
+    if (video !== activeVid || videoTransitioning || !video.duration) return;
+    if (video.duration - video.currentTime <= FADE) crossfadeHeroVideo();
+  }
+
+  vidA.addEventListener('timeupdate', handleHeroVideoProgress);
+  vidB.addEventListener('timeupdate', handleHeroVideoProgress);
 
   // Pause the background video for users who prefer reduced motion
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

@@ -131,6 +131,11 @@ if (home) {
   if (!home.body.includes('href="/play"')) {
     fail("hidden game link", "the home page no longer links to /play");
   }
+
+  const loopingHeroVideos = home.body.match(/<video\b(?=[^>]*\bclass=["'][^"']*\bbg-video\b[^"']*["'])(?=[^>]*\bloop\b)[^>]*>/gi) || [];
+  if (loopingHeroVideos.length !== 2 || !home.body.includes("crossfadeHeroVideo")) {
+    fail("hero video loop", "the two-video crossfade or its native loop fallback is missing");
+  }
 }
 
 const privacy = results.get("/privacy");
