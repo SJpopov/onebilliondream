@@ -3,6 +3,7 @@ const baseUrl = new URL(process.env.MONITOR_BASE_URL || "https://onebilliondream
 const routes = [
   "/",
   "/privacy",
+  "/play",
   "/wall-of-dreamers",
   "/sitemap.xml",
   "/robots.txt",
@@ -126,6 +127,10 @@ if (home) {
   if (!home.body.includes('href="/privacy"')) {
     fail("privacy link", "the home page does not link to /privacy");
   }
+
+  if (!home.body.includes('href="/play"')) {
+    fail("hidden game link", "the home page no longer links to /play");
+  }
 }
 
 const privacy = results.get("/privacy");
@@ -139,6 +144,16 @@ if (privacy) {
       privacy.body.includes("/cdn-cgi/l/email-protection"));
   if (!hasContact) {
     fail("privacy contact", "the public privacy contact is missing");
+  }
+}
+
+const play = results.get("/play");
+if (play) {
+  if (!play.body.includes("<title>Play — One Billion Dream</title>")) {
+    fail("hidden game", "the expected game page title is missing");
+  }
+  if (!/<meta\s+name=["']robots["']\s+content=["'][^"']*noindex/i.test(play.body)) {
+    fail("hidden game privacy", "the hidden game is no longer marked noindex");
   }
 }
 
