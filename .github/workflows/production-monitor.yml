@@ -36,5 +36,9 @@ jobs:
       - name: Check out monitoring code
         uses: actions/checkout@v4
 
+      - name: Allow production deployment to complete
+        if: github.event_name == 'push'
+        run: sleep 45
+
       - name: Check production
         run: node scripts/check-production.mjs
