@@ -905,8 +905,6 @@
     <video id="hero-video-b" class="bg-video" muted playsinline preload="auto" aria-hidden="true" tabindex="-1" style="opacity:0;">
       <source src="857251-hd_1620_1080_25fps.mp4#t=0.001" type="video/mp4">
     </video>
-    <div class="hero-overlay"></div>
-    <div class="star-noise"></div>
     <div class="hero-content" id="top">
       <div class="hero-copy">
         <p class="eyebrow">Independent projects · openly shared</p>
@@ -1350,7 +1348,7 @@
     if (activeVid.duration - activeVid.currentTime <= FADE) {
       standbyVid.currentTime = 0;
       standbyVid.play();
-      standbyVid.style.opacity = '0.68';
+      standbyVid.style.opacity = '1';
       activeVid.style.opacity = '0';
       const prev = activeVid;
       activeVid = standbyVid;

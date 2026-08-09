@@ -88,26 +88,7 @@ body {
   text-align: left;
   background: var(--obd-night);
 }
-#hero .bg-video { opacity: .82; filter: saturate(.95) contrast(1.06) brightness(1.08); }
-.hero-overlay,
-.star-noise { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-#hero > .hero-overlay,
-#hero > .star-noise { position: absolute; z-index: 1; }
-.hero-overlay {
-  z-index: 1;
-  background:
-    radial-gradient(circle at 72% 35%, rgba(100, 145, 192, .28), transparent 38%),
-    linear-gradient(90deg, rgba(7,9,15,.8) 0%, rgba(7,9,15,.52) 48%, rgba(7,9,15,.16) 100%),
-    linear-gradient(0deg, #101b2a 0%, transparent 26%);
-}
-.star-noise {
-  z-index: 1;
-  opacity: .44;
-  background-image: radial-gradient(rgba(255,255,255,.82) .7px, transparent .9px);
-  background-size: 29px 29px;
-  mix-blend-mode: screen;
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,.45), black 24%, rgba(0,0,0,.08) 92%);
-}
+#hero .bg-video { opacity: 1; filter: none; }
 #hero .hero-content { position: relative; z-index: 3; width: min(1160px, calc(100% - 48px)); margin: 0 auto; padding-top: 70px; }
 #hero .hero-copy { max-width: 790px; }
 #hero .eyebrow { color: #e6c989; opacity: 1; animation: none; }
@@ -292,7 +273,6 @@ body > footer .cookie-settings-link { color: #9ca8b8; }
   .nav-links a:not(.nav-github) { display: none; }
   #hero { min-height: 720px; }
   #hero .hero-content { width: min(100% - 32px,680px); }
-  .hero-overlay { background: linear-gradient(90deg,rgba(7,9,15,.84),rgba(7,9,15,.45)),linear-gradient(0deg,#101b2a,transparent 32%); }
   #hero h1 { font-size: clamp(4rem,18vw,6.6rem); }
   .section-head,
   .about-grid,
