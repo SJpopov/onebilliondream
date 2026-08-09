@@ -35,6 +35,28 @@ The legacy snapshot is deliberately kept outside `main` so Cloudflare Pages does
 - Do not replace the crossfade with the native `loop` attribute: a native loop creates a visible colour jump.
 - The implementation intentionally follows the proven pre-redesign two-video polling approach, with a guard that still recovers if the browser reaches the ended state.
 - After changing hero markup, CSS or video JavaScript, test the live page beyond 30 seconds. Verify at least two full cycles and confirm that the background neither stops, turns black nor jumps directly between the final warm frame and the initial blue frame.
+- If the video plays once and freezes on the last frame, suspect the CSP hash before the JavaScript. See the next section.
+
+## Inline scripts and CSP hashes — read before editing any `<script>`
+
+`_headers` allows inline scripts only by `sha256` hash. **Editing a single character inside an inline
+script changes its hash, and the browser then blocks the whole script.**
+
+This already happened once. Commit `17f3453` changed `standbyVid.style.opacity` from `'0.68'` to `'1'`
+and did not update `_headers`. From that commit until `8be4eb8` the entire main script of `index.html`
+was blocked in production: the hero video played once through the `autoplay` attribute and froze on its
+last frame, the standby copy never started, and the donate modals, copy buttons, share links and star
+background were dead too. Four follow-up commits tried to fix the video JavaScript, which never ran.
+Nothing in the page markup reveals this — only the browser console does.
+
+After changing any inline `<script>` in `index.html`, `play.html`, `wall-of-dreamers.html` or `404.html`:
+
+1. Recompute the hash and update `_headers`:
+   `node -e "const f=require('fs'),c=require('crypto');const h=f.readFileSync('index.html','utf8');const r=/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/g;let m,i=0;while((m=r.exec(h)))console.log(++i,'sha256-'+c.createHash('sha256').update(m[1],'utf8').digest('base64'))"`
+   Hash the git content, not the working copy, if line endings differ (`git show HEAD:index.html`).
+2. Load the deployed page and confirm the console shows no `Content Security Policy` violation.
+
+The production monitor cannot catch this: it checks markup and headers, not whether scripts execute.
 
 ## Hidden game and contribution controls
 
