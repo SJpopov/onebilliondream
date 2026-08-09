@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Primary SEO -->
-<title>One Billion Dream — Help One Person's Dream Come True for $1</title>
-<meta name="description" content="One person, one dream, one dollar. The first goal: one million people giving $1 each — the first step toward a billion-dollar dream.">
+<title>One Billion Dream — Independent Projects by @SJpopov</title>
+<meta name="description" content="Independent projects, practical tools and experiments built openly by @SJpopov. Explore the work, follow the journey or support future development.">
 <meta name="author" content="One Billion Dream">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://onebilliondream.com">
@@ -14,8 +14,8 @@
 <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://onebilliondream.com">
-<meta property="og:title" content="One Billion Dream — Help One Person's Dream Come True for $1">
-<meta property="og:description" content="One million people. One dollar each. One impossible dream. Help take the first step toward One Billion Dream.">
+<meta property="og:title" content="One Billion Dream — Independent Projects by @SJpopov">
+<meta property="og:description" content="Independent projects, practical tools and experiments — built one step at a time and shared openly.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 <!-- Google Analytics is loaded only after explicit analytics consent. -->
@@ -26,8 +26,8 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://onebilliondream.com">
-<meta name="twitter:title" content="One Billion Dream — Help One Person's Dream Come True for $1">
-<meta name="twitter:description" content="One million people. One dollar each. One impossible dream. Help take the first step toward One Billion Dream.">
+<meta name="twitter:title" content="One Billion Dream — Independent Projects by @SJpopov">
+<meta name="twitter:description" content="Independent projects, practical tools and experiments — built one step at a time and shared openly.">
 <meta name="twitter:image" content="https://onebilliondream.com/og-image.png">
 
 <!-- Structured Data (JSON-LD) -->
@@ -38,18 +38,14 @@
   "name": "One Billion Dream",
   "alternateName": ["onebilliondream", "OneBillionDream", "one billion dream"],
   "url": "https://onebilliondream.com",
-  "description": "One person asking honestly for help. The first milestone is one million people giving $1 each — the first step toward a billion-dollar dream.",
+  "description": "Independent projects, practical tools and experiments built openly by @SJpopov.",
   "sameAs": [
     "https://github.com/SJpopov"
   ],
-  "potentialAction": {
-    "@type": "DonateAction",
-    "name": "Donate to One Billion Dream",
-    "url": "https://onebilliondream.com/#donate",
-    "recipient": {
-      "@type": "Person",
-      "name": "One Billion Dream"
-    }
+  "creator": {
+    "@type": "Person",
+    "name": "SJpopov",
+    "url": "https://github.com/SJpopov"
   }
 }
 </script>
@@ -880,146 +876,193 @@
     html { scroll-behavior: auto; }
   }
 </style>
+<link rel="stylesheet" href="/site.css">
 </head>
 <body>
 
-<!-- STARS -->
-<div id="stars"></div>
+<div id="stars" aria-hidden="true"></div>
 
-<!-- VIDEO BACKGROUND (B copy fades in near the end of A to hide the loop seam) -->
-<video id="hero-video" class="bg-video" autoplay muted playsinline aria-hidden="true" tabindex="-1">
-  <source src="857251-hd_1620_1080_25fps.mp4#t=0.001" type="video/mp4">
-</video>
-<video id="hero-video-b" class="bg-video" muted playsinline preload="auto" aria-hidden="true" tabindex="-1" style="opacity:0;">
-  <source src="857251-hd_1620_1080_25fps.mp4#t=0.001" type="video/mp4">
-</video>
-
-<!-- HERO -->
-<section id="hero">
-  <p class="hero-eyebrow">A completely honest request</p>
-  <h1>One Billion <em>Dream</em></h1>
-  <p class="hero-sub">I have an impossible dream: a life of freedom, exploration and discovery. I'm starting with one simple goal — one million people, one dollar each.</p>
-  <a href="#donate" class="hero-cta">Donate →</a>
-  <a href="#counter-section" class="scroll-hint">↓ &nbsp; scroll &nbsp; ↓</a>
-</section>
-
-<!-- COUNTER -->
-<section id="counter-section">
-  <p class="counter-label">Total donated so far</p>
-  <p class="counter-number" id="counter">$0</p>
-  <p class="counter-sub">of $1,000,000 first milestone<span id="donors-part"></span></p>
-
-  <div class="math-row">
-    <span class="math-pill">1,000,000 people</span>
-    <span class="math-x">×</span>
-    <span class="math-pill">$1 each</span>
-    <span class="math-x">=</span>
-    <span class="math-pill" style="color:var(--gold); border-color:rgba(201,168,76,0.4)">$1,000,000</span>
+<header class="site-nav">
+  <div class="shell nav-inner">
+    <a class="brand" href="#top" aria-label="One Billion Dream home">
+      <span class="brand-mark">1B</span>
+      <span>One Billion Dream</span>
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#ideas">Ideas</a>
+      <a href="#dreams">Dreams</a>
+      <a href="#donate">Support</a>
+      <a class="nav-github" href="https://github.com/SJpopov" target="_blank" rel="noopener noreferrer">@SJpopov ↗</a>
+    </nav>
   </div>
-  <p style="margin-top:1.75rem;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.18em;color:var(--gold-dim);text-transform:uppercase;">That's the first milestone. The long-term dream: $1,000,000,000.</p>
-</section>
+</header>
 
-<!-- STORY -->
-<section id="story">
-  <p class="section-tag">The story</p>
-  <div class="divider"></div>
-  <h2>When I was a child,<br>I had <a href="/wall-of-dreamers" class="story-link">big dreams.</a></h2>
-
-  <p>I wanted to be an explorer — to do things no one had done before. I wanted to travel to space. I wanted to make discoveries that would matter. I wanted to live a life that felt genuinely extraordinary.</p>
-
-  <p>Then life happened. And at some point I looked around and realized: <strong>I might not get there on my own.</strong></p>
-
-  <p>So instead of pretending otherwise, I decided to do something different. I decided to be completely, almost embarrassingly honest:</p>
-
-  <p><strong>I need help. I want to be financially free — not for the money itself, but for what it unlocks. Free to dream, to explore, to achieve every single thing I've ever wanted.</strong></p>
-
-  <p>No charity cause. No product. No promise of anything in return. Just one person asking honestly for help. The first milestone is simple: if one million people choose to give one dollar, the dream gets its first real chance.</p>
-
-  <ul class="dreams-list">
-    <li>Travel to space before I die</li>
-    <li>Fund an expedition to somewhere unexplored</li>
-    <li>Never worry about money again</li>
-    <li>Wake up each morning and ask "what shall I discover today?"</li>
-    <li>Prove that asking is braver than not asking</li>
-  </ul>
-
-  <p>Is this naive? Absolutely. Is it worth trying? I believe so.</p>
-</section>
-
-<!-- WHAT I'LL DO -->
-<section id="whatfor">
-  <p class="section-tag">Complete transparency</p>
-  <div class="divider"></div>
-  <h2>What will I do<br>with the <em style="color:#4a9eda">money?</em></h2>
-  <p class="whatfor-note">No spin. Just the truth.</p>
-
-  <div class="whatfor-grid">
-    <div class="whatfor-card">
-      <span class="icon">🚀</span>
-      <h3>Buy a ticket to space</h3>
-      <p>Seriously. This is non-negotiable. First major purchase.</p>
+<main class="site-main">
+  <section id="hero">
+    <video id="hero-video" class="bg-video" autoplay muted playsinline aria-hidden="true" tabindex="-1">
+      <source src="857251-hd_1620_1080_25fps.mp4#t=0.001" type="video/mp4">
+    </video>
+    <video id="hero-video-b" class="bg-video" muted playsinline preload="auto" aria-hidden="true" tabindex="-1" style="opacity:0;">
+      <source src="857251-hd_1620_1080_25fps.mp4#t=0.001" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="star-noise"></div>
+    <div class="hero-content" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow">Independent projects · openly shared</p>
+        <h1>One Billion Dream</h1>
+        <p class="hero-lede">I build independent projects, explore new ideas, and share what I learn along the way. If something here helps or inspires you, you’re welcome to support the work.</p>
+        <div class="hero-actions">
+          <a class="site-button site-button-primary" href="#projects">Explore the projects ↓</a>
+          <a class="site-button site-button-secondary" href="#dreams">The story behind the dream</a>
+        </div>
+      </div>
     </div>
-    <div class="whatfor-card">
-      <span class="icon">🗺️</span>
-      <h3>Fund an expedition</h3>
-      <p>Somewhere remote. Somewhere no one cares about yet.</p>
+    <a href="#introduction" class="scroll-hint">Scroll to discover</a>
+  </section>
+
+  <section class="dawn" id="introduction" aria-label="Introduction">
+    <div class="shell dawn-quote">
+      <span>From ideas to working projects</span>
+      <p>Building independently means learning in public, improving honestly, and turning curiosity into something real.</p>
     </div>
-    <div class="whatfor-card">
-      <span class="icon">😌</span>
-      <h3>Sleep without anxiety</h3>
-      <p>A small dream. But a real one.</p>
+  </section>
+
+  <section id="projects">
+    <div class="shell">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Selected work</p>
+          <h2>What I’m building</h2>
+        </div>
+        <p>Practical tools, working systems and learning projects — each one built to solve a real problem or explore a better way of working.</p>
+      </div>
+
+      <div class="project-stack">
+        <article class="project-story" id="pc-audit-copilot">
+          <div class="project-visual audit-visual" aria-label="Conceptual PC Audit Copilot report preview">
+            <span class="visual-label">Evidence-led Windows audit</span>
+            <div class="audit-radar"></div>
+            <div class="audit-window">
+              <div class="window-top"><i></i><i></i><i></i></div>
+              <div class="audit-line good"></div><div class="audit-line"></div><div class="audit-line short"></div><div class="audit-line"></div>
+            </div>
+          </div>
+          <div class="project-copy">
+            <span class="status">Working prototype · validation ongoing</span>
+            <h3>PC Audit Copilot</h3>
+            <p>A read-only Windows security audit assistant that gathers evidence, explains suspicious findings in plain language, and keeps every proposed fix behind explicit approval.</p>
+            <div class="card-meta"><span>Windows security</span><span>PowerShell</span><span>Evidence-led AI</span></div>
+          </div>
+        </article>
+
+        <article class="project-story reverse" id="insurance-workflow-automation">
+          <div class="project-visual workflow-visual" aria-label="Conceptual insurance workflow diagram">
+            <span class="visual-label">From comparison to a reviewable result</span>
+            <div class="flow-line"></div>
+            <div class="flow-node one">COMPARE</div><div class="flow-node two">REVIEW</div><div class="flow-node three">COMPLETE</div>
+          </div>
+          <div class="project-copy">
+            <span class="status">In development · private</span>
+            <h3>Insurance Workflow Automation</h3>
+            <p>A professional workflow project focused on reducing repetitive work, comparing offers, and turning complex insurance processes into reliable, reviewable steps.</p>
+            <div class="card-meta"><span>Automation</span><span>Python</span><span>Real-world workflow</span></div>
+          </div>
+        </article>
+
+        <article class="project-story" id="game-mission-control">
+          <div class="project-visual mission-visual" aria-label="Conceptual Game Mission Control dashboard">
+            <span class="visual-label">Game automation · live operations</span>
+            <div class="mission-screen">
+              <div class="mission-status"><span>MISSION CONTROL</span><span>● SYSTEM ONLINE</span></div>
+              <div class="mission-grid">
+                <div class="mission-metric">ACTIVE TASKS<strong>06</strong></div><div class="mission-metric">MONITOR<strong>OK</strong></div><div class="mission-metric">ALERTS<strong>00</strong></div>
+                <div class="mission-metric">AUTOMATION<strong>LIVE</strong></div><div class="mission-metric">RECOVERY<strong>READY</strong></div><div class="mission-metric">UPTIME<strong>24/7</strong></div>
+              </div>
+            </div>
+          </div>
+          <div class="project-copy">
+            <span class="status">Working system · actively developed</span>
+            <h3>Game Mission Control</h3>
+            <p>A live automation and operations system for a browser strategy game, combining autonomous tasks, monitoring, alerts, recovery and a dedicated Mission Control dashboard.</p>
+            <div class="card-meta"><span>Node.js</span><span>Browser automation</span><span>Monitoring</span></div>
+          </div>
+        </article>
+
+        <article class="project-story reverse" id="knowledge-system">
+          <div class="project-visual knowledge-visual" aria-label="Conceptual connected knowledge notes">
+            <span class="visual-label">Learning becomes connected knowledge</span>
+            <div class="note-card a"><strong>Capture</strong>Raw thoughts start in one simple inbox.</div>
+            <div class="note-card b"><strong>Connect</strong>Ideas become small, linked and reusable notes.</div>
+            <div class="note-card c"><strong>Apply</strong>Lessons stay connected to the projects where they were learned.</div>
+          </div>
+          <div class="project-copy">
+            <span class="status">Learning project · in progress</span>
+            <h3>Knowledge System</h3>
+            <p>A personal Markdown knowledge system that turns rough notes into connected concepts, preserves lessons from real projects, and makes learning easier to reuse over time.</p>
+            <div class="card-meta"><span>Markdown</span><span>Connected notes</span><span>AI-assisted learning</span></div>
+          </div>
+        </article>
+      </div>
     </div>
-    <div class="whatfor-card">
-      <span class="icon">📖</span>
-      <h3>Write about all of it</h3>
-      <p>Every adventure, every discovery — documented honestly.</p>
+  </section>
+
+  <section id="about">
+    <div class="shell about-grid">
+      <div class="orbit-art" aria-hidden="true"><span class="orbit-dot"></span></div>
+      <div class="about-copy">
+        <p class="eyebrow">Building independently</p>
+        <h2>Learning by making things real.</h2>
+        <p>I’ve chosen to develop my ideas independently and turn them into real projects. Some are practical, some experimental, and all are part of the same journey: learning, creating, solving problems and sharing what I build.</p>
+        <a class="signature" href="https://github.com/SJpopov" target="_blank" rel="noopener noreferrer"><span class="mini-mark">S</span> Follow the work on GitHub · @SJpopov ↗</a>
+      </div>
     </div>
-    <div class="whatfor-card">
-      <span class="icon">🎲</span>
-      <h3>Take some ridiculous risks</h3>
-      <p>The kind you can only take when you're not scared of losing everything.</p>
+  </section>
+
+  <section id="ideas">
+    <div class="shell">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Ideas for the future</p>
+          <h2>Still on the horizon</h2>
+        </div>
+        <p>Not promises or deadlines — just directions I want to explore when the right moment arrives.</p>
+      </div>
+      <div class="idea-grid">
+        <article class="idea-card"><span class="idea-number">01</span><h3>An Independent Game</h3><p>A complete original game — from its rules and world to the systems that make it feel alive.</p></article>
+        <article class="idea-card"><span class="idea-number">02</span><h3>Multi-Agent Workspace</h3><p>A system where multiple AI agents can cooperate, preserve context and safely work on larger goals together.</p></article>
+        <article class="idea-card ghost"><span class="idea-number">03</span><h3>More ideas coming</h3><p>This space is meant to grow. New experiments will appear here as they become clear enough to build.</p></article>
+      </div>
     </div>
-    <div class="whatfor-card">
-      <span class="icon">💰</span>
-      <h3>Invest the rest wisely</h3>
-      <p>Okay, maybe not that exciting. But honest.</p>
+  </section>
+
+  <section id="dreams">
+    <div class="shell dreams-grid">
+      <div class="dreams-copy">
+        <p class="eyebrow">Why One Billion Dream?</p>
+        <h2>Everyone has dreams.</h2>
+        <p>Mine are to create freely, explore, discover, and build things that may be useful to others. One Billion Dream is my decision to keep working toward those dreams — openly, one project at a time.</p>
+      </div>
+      <div class="dream-list" aria-label="Dreams">
+        <div class="dream-item"><i>✦</i><span>Build useful things and share what I learn</span></div>
+        <div class="dream-item"><i>✦</i><span>Create with the freedom to follow meaningful ideas</span></div>
+        <div class="dream-item"><i>✦</i><span>Explore new places, technology and possibilities</span></div>
+        <div class="dream-item"><i>✦</i><span>Keep turning unlikely ideas into real projects</span></div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
 <!-- DONATE -->
 <section id="donate">
-  <p class="section-tag">Help make it happen</p>
-  <div class="divider"></div>
-  <h2>Choose your <em>method</em></h2>
-  <p class="donate-sub">Give $1 — or any amount you're comfortable with.</p>
-
-  <div style="width:100%;max-width:540px;margin:0 auto 2.5rem;">
-    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.75rem;">
-      <div style="display:flex;align-items:baseline;gap:5px;">
-        <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.15em;color:var(--gold-dim);text-transform:uppercase;white-space:nowrap;">Raised so far —</span>
-        <a href="/play" class="play-link" title="" style="display:inline-flex;align-items:baseline;text-decoration:none;cursor:pointer;opacity:0.8;transition:opacity 0.2s;flex-shrink:0;"><svg width="14" height="22" viewBox="0 0 22 34" style="margin-bottom:-4px;" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="11" cy="5" r="5" fill="#f5f0e8" opacity="0.8"/>
-          <line x1="11" y1="10" x2="11" y2="22" stroke="#f5f0e8" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
-          <line x1="11" y1="15" x2="2" y2="9" stroke="#f5f0e8" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
-          <line x1="11" y1="15" x2="20" y2="9" stroke="#f5f0e8" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
-          <line x1="11" y1="22" x2="5" y2="32" stroke="#f5f0e8" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
-          <line x1="11" y1="22" x2="17" y2="32" stroke="#f5f0e8" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
-        </svg></a>
-        <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--gold);text-transform:uppercase;">not enough</span>
-      </div>
-      <span style="font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);white-space:nowrap;">First milestone: $1,000,000</span>
+  <div class="shell support-panel">
+    <div class="support-copy">
+      <p class="eyebrow">Optional support</p>
+      <h2>Support the work</h2>
+      <p>If something I’ve built has helped you, inspired you, or you simply like what I’m doing, you can support the work with any amount you choose. There is no obligation — your support simply gives me more time and freedom to keep building and sharing.</p>
     </div>
-    <div style="position:relative;height:6px;background:rgba(245,240,232,0.08);border-radius:3px;overflow:hidden;">
-      <div id="progress-bar" style="height:100%;width:0%;background:linear-gradient(90deg,var(--gold-dim),var(--gold));border-radius:3px;transition:width 1.5s ease;"></div>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:0.6rem;">
-      <span id="raised-amount" style="font-family:'Space Mono',monospace;font-size:12px;color:var(--gold);">$947</span>
-      <span id="raised-pct" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--gold);background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);padding:2px 8px;border-radius:2px;">0.0947%</span>
-    </div>
-  </div>
-
-  <div class="donate-methods">
+    <div class="donate-methods">
     <a id="paypal-btn" class="donate-btn btn-paypal" href="https://www.paypal.com/donate?hosted_button_id=8S8HPJ6H47EYA&locale.x=en_US" target="_blank" rel="noopener noreferrer">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.59 3.025-2.566 4.643-5.813 4.643H12.55c-.524 0-.968.382-1.05.9L10.317 18.5l-.314 1.988a.407.407 0 0 0 .403.469h3.096c.452 0 .836-.33.906-.777l.037-.193.72-4.568.046-.252a.915.915 0 0 1 .905-.777h.57c3.694 0 6.586-1.5 7.43-5.84.352-1.808.17-3.317-.894-4.381z"/></svg>
       PayPal
@@ -1041,36 +1084,44 @@
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg>
       Bank Transfer (IBAN)
     </button>
+    <p class="donate-fine">This is a voluntary personal contribution, not an investment or a charitable donation. Nothing is promised in return.</p>
   </div>
-
-  <p class="donate-fine">This is a voluntary personal contribution, not an investment or a charitable donation. Nothing is promised in return.</p>
+  </div>
 </section>
 
 <!-- SHARE -->
 <section id="share">
-  <p class="section-tag">Spread the dream</p>
-  <div class="divider"></div>
-  <h2>You don't have to give.<br>But you could <em>share.</em></h2>
-  <p class="share-sub">Sharing costs nothing. And it's how dreams actually come true.</p>
-
-  <div class="share-text-box">
-    "I gave $1 to an impossible dream. The first goal is one million people giving one dollar each. No product, no charity claim, no promises — just an honest request."
-  </div>
-
-  <div class="share-btns">
-    <a class="share-btn" id="tw-share" href="#" target="_blank" rel="noopener noreferrer" data-share-method="twitter">Twitter / X</a>
-    <a class="share-btn" id="fb-share" href="#" target="_blank" rel="noopener noreferrer" data-share-method="facebook">Facebook</a>
-    <a class="share-btn" id="wa-share" href="#" target="_blank" rel="noopener noreferrer" data-share-method="whatsapp">WhatsApp</a>
-    <a class="share-btn" id="tg-share" href="#" target="_blank" rel="noopener noreferrer" data-share-method="telegram">Telegram</a>
-    <a class="share-btn" id="rd-share" href="#" target="_blank" rel="noopener noreferrer" data-share-method="reddit">Reddit</a>
-    <button id="copy-link-btn" class="share-btn">Copy Link</button>
+  <div class="shell share-layout">
+    <div>
+      <p class="eyebrow">Follow the journey</p>
+      <h2>Share the work</h2>
+      <p class="share-sub">If a project or idea feels useful, sharing it is another way to help it reach the right person.</p>
+    </div>
+    <div>
+      <div class="share-text-box">“Independent projects, practical tools and experiments — built one step at a time and shared openly.”</div>
+      <div class="share-btns">
+        <a class="share-btn" id="tw-share" href="#" target="_blank" rel="noopener noreferrer" data-share-method="twitter">Twitter / X</a>
+        <a class="share-btn" id="fb-share" href="#" target="_blank" rel="noopener noreferrer" data-share-method="facebook">Facebook</a>
+        <a class="share-btn" id="wa-share" href="#" target="_blank" rel="noopener noreferrer" data-share-method="whatsapp">WhatsApp</a>
+        <a class="share-btn" id="tg-share" href="#" target="_blank" rel="noopener noreferrer" data-share-method="telegram">Telegram</a>
+        <a class="share-btn" id="rd-share" href="#" target="_blank" rel="noopener noreferrer" data-share-method="reddit">Reddit</a>
+        <button id="copy-link-btn" class="share-btn">Copy Link</button>
+      </div>
+    </div>
   </div>
 </section>
+</main>
 
 <footer>
-  © 2026 One Billion Dream &nbsp;·&nbsp; No promises were harmed in the making of this site.
-  &nbsp;·&nbsp; <a href="/privacy" class="cookie-settings-link">Privacy</a>
-  &nbsp;·&nbsp; <button id="cookie-settings-btn" class="cookie-settings-link" type="button">Cookie settings</button>
+  <div class="footer-inner">
+    <span>© 2026 One Billion Dream · Independent projects by @SJpopov</span>
+    <div class="footer-links">
+      <a href="https://github.com/SJpopov" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="/wall-of-dreamers">Wall of Dreamers</a>
+      <a href="/privacy">Privacy</a>
+      <button id="cookie-settings-btn" class="cookie-settings-link" type="button">Cookie settings</button>
+    </div>
+  </div>
 </footer>
 
 <!-- BANK MODAL -->
@@ -1289,7 +1340,7 @@
     if (activeVid.duration - activeVid.currentTime <= FADE) {
       standbyVid.currentTime = 0;
       standbyVid.play();
-      standbyVid.style.opacity = '0.6';
+      standbyVid.style.opacity = '0.68';
       activeVid.style.opacity = '0';
       const prev = activeVid;
       activeVid = standbyVid;
@@ -1302,40 +1353,6 @@
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     vidA.pause();
   }
-
-  // ============================================
-  // СМЕНИ САМО ТЕЗИ ЦИФРИ:
-  const TOTAL_RAISED = 947;   // събрана сума в $
-  const TOTAL_DONORS = 0;     // брой дарители (при 0 редът се скрива)
-  // ============================================
-  const GOAL = 1000000;
-  const pct = (TOTAL_RAISED / GOAL) * 100;
-
-  // Progress bar
-  document.getElementById('progress-bar').style.width = pct + '%';
-  document.getElementById('progress-bar').style.minWidth = TOTAL_RAISED > 0 ? '2px' : '0';
-  document.getElementById('raised-amount').textContent = '$' + TOTAL_RAISED.toLocaleString();
-  document.getElementById('raised-pct').textContent = pct < 0.01 ? '<0.01%' : pct.toFixed(pct < 1 ? 4 : 2) + '%';
-
-  // Donors line (hidden while TOTAL_DONORS is 0)
-  if (TOTAL_DONORS > 0) {
-    document.getElementById('donors-part').innerHTML =
-      ' &nbsp;·&nbsp; ' + TOTAL_DONORS.toLocaleString() + ' donor' + (TOTAL_DONORS === 1 ? '' : 's');
-  }
-
-  // Counter (Total donated so far)
-  function animateCounter() {
-    const el = document.getElementById('counter');
-    if (TOTAL_RAISED === 0) { el.textContent = '$0'; return; }
-    let val = 0;
-    const step = Math.ceil(TOTAL_RAISED / 80);
-    const t = setInterval(() => {
-      val = Math.min(val + step, TOTAL_RAISED);
-      el.textContent = '$' + val.toLocaleString();
-      if (val >= TOTAL_RAISED) clearInterval(t);
-    }, 20);
-  }
-  animateCounter();
 
   // Modals
   function openBankModal() {
@@ -1351,7 +1368,7 @@
 
   // Share links
   const url = encodeURIComponent('https://onebilliondream.com');
-  const txt = encodeURIComponent('I gave $1 to an impossible dream. The first goal is one million people giving one dollar each. No product, no charity claim, no promises — just an honest request. onebilliondream.com');
+  const txt = encodeURIComponent('Independent projects, practical tools and experiments — built one step at a time and shared openly. onebilliondream.com');
   document.getElementById('tw-share').href = `https://twitter.com/intent/tweet?text=${txt}&url=${url}`;
   document.getElementById('fb-share').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
   document.getElementById('wa-share').href = `https://wa.me/?text=${txt}%20${url}`;

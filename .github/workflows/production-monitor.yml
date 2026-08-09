@@ -11,6 +11,7 @@ on:
       - ".github/workflows/production-monitor.yml"
       - "scripts/check-production.mjs"
       - "index.html"
+      - "site.css"
       - "privacy.html"
       - "wall-of-dreamers.html"
       - "sitemap.xml"

@@ -1,27 +1,27 @@
 # One Billion Dream
-> A completely honest donation request. One person asking the world for help to achieve their dream.
+> Independent projects, practical tools and experiments built openly by @SJpopov.
 
 ## What is this?
-One Billion Dream is a personal fundraising page with no promises, no charity claim, and no product.
-The first milestone is one million people giving $1 each — the first step toward the long-term billion-dollar dream.
+One Billion Dream is the public home for independently developed projects and ideas.
+The site shares working systems, prototypes, learning projects and future directions.
 
-## The Dream
-The person behind this site has always dreamed of being financially free — not for the money itself, 
-but for what it unlocks: the freedom to explore, to travel to space, to fund expeditions, 
-to do things no one has done before.
+## Current projects
+- PC Audit Copilot: a read-only Windows security-audit assistant; working prototype with validation in progress.
+- Insurance Workflow Automation: a private professional workflow project in development.
+- Game Mission Control: a working automation, monitoring and recovery system for a browser strategy game.
+- Knowledge System: a personal Markdown learning and connected-notes project.
 
-## How to contribute
-Voluntary personal contributions are accepted via:
-- PayPal: https://www.paypal.com/donate?hosted_button_id=8S8HPJ6H47EYA
-- Revolut: https://revolut.me/stefanjpopov
-- Bank transfer (IBAN: LT87 3250 0447 2971 3748, BIC: REVOLT21)
+## Future ideas
+- An independent original game.
+- A workspace where multiple AI agents can cooperate safely on larger goals.
 
-Crypto contributions are temporarily unavailable while wallet access and
-supported networks are being verified.
+## Optional support
+Visitors who find the work useful or inspiring may provide voluntary personal support in any amount through PayPal, card, Revolut or bank transfer. Support is not an investment, a charitable donation or a purchase, and nothing is promised in return.
 
-## Why?
-Because asking honestly is braver than not asking. 
-$1 is nothing to most people. To one person, it could mean everything.
+Crypto support is temporarily unavailable while wallet access and supported networks are verified.
+
+## Public profile
+https://github.com/SJpopov
 
 ## Website
 https://onebilliondream.com

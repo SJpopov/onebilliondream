@@ -87,7 +87,7 @@ if (home) {
     fail("primary hostname", `final hostname is ${finalUrl.hostname}`);
   }
 
-  if (!home.body.includes("One million people. One dollar each.")) {
+  if (!home.body.includes("I build independent projects")) {
     fail("home-page marker", "expected public message is missing");
   }
 
