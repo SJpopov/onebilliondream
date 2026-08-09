@@ -4,6 +4,8 @@
 
 One Billion Dream is the public home for projects, experiments and ideas built independently by [@SJpopov](https://github.com/SJpopov). Visitors can explore the work, follow its development, share the site or optionally support future work.
 
+For the current implementation decisions, external-service status and the preserved pre-redesign backup, see [`PROJECT_STATUS.md`](PROJECT_STATUS.md).
+
 🌐 **[onebilliondream.com](https://onebilliondream.com)**
 
 ## Current projects
