@@ -1345,6 +1345,19 @@
   let videoTransitioning = false;
   const FADE = 1.4; // seconds — keep in sync with .bg-video transition
 
+  function waitForDecodedVideoFrame(video) {
+    return new Promise((resolve) => {
+      if (typeof video.requestVideoFrameCallback === 'function') {
+        video.requestVideoFrameCallback(() => resolve());
+        return;
+      }
+
+      // Older browsers: allow a paint after playback starts before revealing
+      // the standby copy. The outgoing frame remains fully visible meanwhile.
+      requestAnimationFrame(() => requestAnimationFrame(resolve));
+    });
+  }
+
   async function crossfadeHeroVideo() {
     if (videoTransitioning) return;
     videoTransitioning = true;
@@ -1355,6 +1368,7 @@
 
     try {
       await incomingVid.play();
+      await waitForDecodedVideoFrame(incomingVid);
     } catch {
       // If starting the standby copy is rejected, restart the visible copy
       // instead of leaving the hero without a moving background.

@@ -32,6 +32,7 @@ The legacy snapshot is deliberately kept outside `main` so Cloudflare Pages does
 - Desktop and mobile use the same compressed MP4: `857251-hd_1620_1080_25fps.mp4`.
 - Do not add an artificial star grid or a full-screen dark overlay. The video contains its own natural stars and is already dark enough for the text.
 - The two `.bg-video` elements crossfade for 1.4 seconds before the active copy ends. This hides the different colours at the first and last frames.
+- The outgoing copy must remain visible until `waitForDecodedVideoFrame()` confirms that the standby copy has produced a real frame. Removing this guard can create a black flash during later cycles.
 - Do not replace the crossfade with the native `loop` attribute: a native loop creates a visible colour jump.
 - The implementation intentionally follows the proven pre-redesign two-video polling approach, with a guard that still recovers if the browser reaches the ended state.
 - After changing hero markup, CSS or video JavaScript, test the live page beyond 30 seconds. Verify at least two full cycles and confirm that the background neither stops, turns black nor jumps directly between the final warm frame and the initial blue frame.
@@ -83,4 +84,3 @@ Whenever the site's purpose, featured projects or public copy changes, review an
 - `.github/workflows/production-monitor.yml` runs every 15 minutes and after relevant pushes.
 - `scripts/check-production.mjs` verifies public routes, HTTPS, security headers, canonical metadata, privacy controls, the hidden crypto state, the hidden game and the two-video hero crossfade markers.
 - GitHub Actions failure notifications are managed by the daily monitoring task and the Gmail label `One Billion Dream — Monitoring`.
-
