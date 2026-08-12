@@ -87,7 +87,7 @@ Current GitHub repository metadata:
 
 Current public metadata is aligned across `index.html`, Open Graph, Twitter cards, JSON-LD, `README.md`, `llms.txt`, `og-image.png`, `wall-of-dreamers.html` and `sitemap.xml`.
 
-Google may temporarily show the former fundraising title and description until it recrawls the site. The homepage and `/wall-of-dreamers` were submitted for priority recrawling in Search Console on 2026-08-09. The exact-name Linktree result is unrelated to this project and must not be added to `sameAs` or treated as an official profile.
+Google may temporarily show the former fundraising title and description until it recrawls the site. The homepage and `/wall-of-dreamers` were submitted for priority recrawling in Search Console on 2026-08-09. After Google used the Knowledge System card as a misleading homepage snippet, the homepage hero was given a clearer site-level summary and only that card's description was marked `data-nosnippet`; the homepage was submitted again for priority recrawling on 2026-08-13. The exact-name Linktree result is unrelated to this project and must not be added to `sameAs` or treated as an official profile.
 
 Whenever the site's purpose, featured projects or public copy changes, review and update all of the following together:
 
