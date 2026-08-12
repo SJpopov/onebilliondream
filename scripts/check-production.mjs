@@ -88,8 +88,12 @@ if (home) {
     fail("primary hostname", `final hostname is ${finalUrl.hostname}`);
   }
 
-  if (!home.body.includes("I build independent projects")) {
+  if (!home.body.includes("One Billion Dream is the public home of independent projects")) {
     fail("home-page marker", "expected public message is missing");
+  }
+
+  if (!/<p\s+data-nosnippet>A personal Markdown knowledge system/.test(home.body)) {
+    fail("Google snippet safeguard", "Knowledge System description is not excluded from search snippets");
   }
 
   if (!home.body.includes('<link rel="canonical" href="https://onebilliondream.com">')) {
