@@ -34,6 +34,20 @@ This file records future operational-security work for One Billion Dream. None o
 - Review Audit Logs for unexpected changes.
 - Verify Pages production branch, custom domains, DNS records, DNSSEC and deployment notifications.
 
+#### DNS records that belong to another project — do not delete or change
+
+The `onebilliondream.com` zone contains two records that are **not** part of this site. Leave them untouched during any DNS review or cleanup:
+
+| Record | Type | Target | Protection |
+|---|---|---|---|
+| `mission.onebilliondream.com` | CNAME, Proxied (Tunnel) | Cloudflare Tunnel | Cloudflare Access |
+| `mc.onebilliondream.com` | CNAME, Proxied (Tunnel) | Cloudflare Tunnel | Cloudflare Access |
+
+- They belong to the separate project **bulfleet-bot** (`D:\Projects\bulfleet-bot`).
+- Added on 15 September 2026.
+- Related and equally out of scope here: the Zero Trust organization `mission-bf` and its Access applications `mission` and `mc`.
+- Any question about these records, the tunnel or the Access policies is handled in the bulfleet-bot project, not here.
+
 ## 2. Recovery plan — pending test
 
 The repository and Cloudflare Pages deployment history provide two recovery paths.
